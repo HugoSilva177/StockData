@@ -17,15 +17,15 @@
   stat: path=/home/vagrant/.ssh/id_rsa.pub
   register: pub_key_created
 
-- name: "Gerar chave pública com ssh-keygen"
-  command: ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -P ""
+- name: "Criar nova chave pública e copiar no authorized_keys"
+  shell: "{{ item }}"
+  loop:
+    - ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -P ""
+    - cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
   when: pub_key_created.stat.exists == False
 
-- name: "Adicionar chave pública ao "
-  shell: cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
-
 - name: "Verificar se a pasta hadoop já existe"
-  stat: path=/home/vagrant/hadoop
+  stat: path=/usr/local/hadoop
   register: hadoop_created
 
 - name: 'Baixar o arquivo de instalação do Hadoop se ainda não existir'
@@ -37,11 +37,25 @@
 - name: 'Descompactar o arquivo hadoop-3.2.1.tar.gz se ainda não existir'
   unarchive:
     src: '/tmp/hadoop.tar.gz'
-    dest: '/home/vagrant/'
+    dest: '/usr/local/'
     remote_src: yes
   become: yes
   when: hadoop_created.stat.exists == False
 
 - name: 'Renomeando pasta para apenas hadoop se ainda não existir'
-  command: mv /home/vagrant/hadoop-3.2.1 /home/vagrant/hadoop
+  command: mv /usr/local/hadoop-3.2.1 /usr/local/hadoop
   when: hadoop_created.stat.exists == False
+  become: yes
+
+- name: "Incluir JAVA_HOME no arquivo hadoop-env.sh"
+  ansible.builtin.lineinfile:
+    path: /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+    regexp: '^#  JAVA_HOME='
+    line: export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+  become: yes
+
+- name: "Adicionando JAVA_HOME no arquivo environment"
+  ansible.builtin.lineinfile:
+    path: /etc/environment
+    line: JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre"
+  become: yes
