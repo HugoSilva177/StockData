@@ -9,10 +9,9 @@ Vagrant.configure("2") do |config|
                     ]
     end
 
-    config.vm.define "hadoop-master" do |h_master|
-        h_master.vm.box = "hadoop-master"
+    config.vm.define "hadoop-master" do |hm|
         # Definindo a rede como private e o ip
-        h_master.vm.network "private_network", ip: "172.17.177.40"
+        hm.vm.network "private_network", ip: "172.17.177.40"
     end
 
     #config.vm.define "mysql" do |m|
