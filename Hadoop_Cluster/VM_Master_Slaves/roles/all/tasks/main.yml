@@ -1,0 +1,17 @@
+---
+- name: "Adicionar master e slaves do Hadoop no arquivo hosts"
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    insertbefore: '# The following lines are desirable for IPv6 capable hosts'
+    line: "{{ item }}"
+  loop:
+    - 172.17.177.40 hadoop-master
+    - 172.17.177.41 hadoop-slave1
+    - 172.17.177.42 hadoop-slave2
+  become: yes
+
+- name: "Adicionar hostname do master e slaves no arquivo /etc/hostname"
+  ansible.builtin.lineinfile:
+    path: /etc/hostname
+    line: "{{ ansible_hostname }}"
+  become: yes

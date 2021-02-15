@@ -13,10 +13,12 @@
     path: /home/vagrant/.bashrc
     line: export PDSH_RCMD_TYPE=ssh
 
-- name: 'Copiar chave pública do host para VM'
+- name: "Copiar chaves públicas dos hosts para a VM"
   copy:
-    src: 'files/id_rsa.pub'
-    dest: '/home/vagrant/.ssh/host_id_rsa.pub'
+    src: "{{ item }}"
+    dest: "/home/vagrant/.ssh/"
+  with_fileglob:
+    - "files/*"
   become: yes
 
 - name: "Verificar se chave pública já existe"
@@ -28,7 +30,8 @@
   loop:
     - ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -P ""
     - cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
-    - cat /home/vagrant/.ssh/host_id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+    - cat /home/vagrant/.ssh/id_rsa_home.pub >> /home/vagrant/.ssh/authorized_keys
+    - cat /home/vagrant/.ssh/id_rsa_work.pub >> /home/vagrant/.ssh/authorized_keys
   when: pub_key_created.stat.exists == False
 
 - name: "Verificar se a pasta hadoop já existe"
@@ -86,15 +89,4 @@
   loop:
     - chown hadoopuser:root -R /usr/local/hadoop/
     - chmod g+rwx -R /usr/local/hadoop/
-  become: yes
-
-- name: "Adicionar master e slaves do Hadoop no arquivo hosts"
-  ansible.builtin.lineinfile:
-    path: /etc/hosts
-    insertbefore: '# The following lines are desirable for IPv6 capable hosts'
-    line: "{{ item }}"
-  loop:
-    - 172.17.177.40 hadoop-master
-    - 172.17.177.41 hadoop-slave1
-    - 172.17.177.42 hadoop-slave2
   become: yes
