@@ -1,0 +1,5 @@
+---
+- name: "Adicionar nome no hostname do hadoop-slave2"
+  ansible.builtin.lineinfile:
+    path: /etc/hostname
+    line: hadoop-slave2

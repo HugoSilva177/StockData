@@ -1,0 +1,17 @@
+Vagrant.configure("2") do |config|
+
+    config.vm.provider "virtualbox" do |v|
+      v.memory = 1024 # 1024 de memória
+      v.customize [ "modifyvm", :id,
+                  "--nicpromisc2", "allow-all"
+                  ]
+    end
+
+    config.vm.define "hadoop-cluster" do |hc|
+      hc.vm.box = "bento/ubuntu-18.04"
+      hc.vm.hostname = "hadoop-cluster"
+      # Definindo a rede como private e o ip
+      hc.vm.network "private_network", ip: "172.17.177.39"
+    end
+
+end

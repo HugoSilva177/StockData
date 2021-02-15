@@ -1,0 +1,100 @@
+---
+- name: "Instalar pacotes necessários"
+  apt:
+    name:
+      - ssh
+      - pdsh
+      - openjdk-8-jdk
+    state: latest
+  become: yes
+
+- name: "Adicionar linha ao arquivo .bashrc"
+  ansible.builtin.lineinfile:
+    path: /home/vagrant/.bashrc
+    line: export PDSH_RCMD_TYPE=ssh
+
+- name: 'Copiar chave pública do host para VM'
+  copy:
+    src: 'files/id_rsa.pub'
+    dest: '/home/vagrant/.ssh/host_id_rsa.pub'
+  become: yes
+
+- name: "Verificar se chave pública já existe"
+  stat: path=/home/vagrant/.ssh/id_rsa.pub
+  register: pub_key_created
+
+- name: "Criar nova chave pública e copiar no authorized_keys"
+  shell: "{{ item }}"
+  loop:
+    - ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -P ""
+    - cat /home/vagrant/.ssh/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+    - cat /home/vagrant/.ssh/host_id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+  when: pub_key_created.stat.exists == False
+
+- name: "Verificar se a pasta hadoop já existe"
+  stat: path=/usr/local/hadoop
+  register: hadoop_created
+
+- name: "Baixar o arquivo de instalação do Hadoop se ainda não existir"
+  get_url:
+    url: 'https://mirrors.sonic.net/apache/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz'
+    dest: '/tmp/hadoop.tar.gz'
+  when: hadoop_created.stat.exists == False
+
+- name: "Descompactar o arquivo hadoop-3.2.1.tar.gz se ainda não existir"
+  unarchive:
+    src: '/tmp/hadoop.tar.gz'
+    dest: '/usr/local/'
+    remote_src: yes
+  become: yes
+  when: hadoop_created.stat.exists == False
+
+- name: "Renomeando pasta para apenas hadoop se ainda não existir"
+  command: mv /usr/local/hadoop-3.2.1 /usr/local/hadoop
+  when: hadoop_created.stat.exists == False
+  become: yes
+
+- name: "Incluir JAVA_HOME no arquivo hadoop-env.sh"
+  ansible.builtin.lineinfile:
+    path: /usr/local/hadoop/etc/hadoop/hadoop-env.sh
+    regexp: '^#  JAVA_HOME='
+    line: export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+  become: yes
+
+- name: "Adicionando JAVA_HOME no arquivo environment"
+  ansible.builtin.lineinfile:
+    path: /etc/environment
+    line: JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre"
+  become: yes
+
+- name: "Garantir que o grupo hadoopuser seja criado"
+  group:
+    name: hadoopuser
+    state: present
+  become: yes
+
+- name: "Adicionar usuário hadoopuser, home folder e suas configurações"
+  ansible.builtin.user:
+    name: hadoopuser
+    shell: /bin/bash
+    groups: hadoopuser,sudo
+    append: yes
+  become: yes
+
+- name: "Dar permissões de acesso a pasta hadoop para o hadoopuser"
+  command: "{{ item }}"
+  loop:
+    - chown hadoopuser:root -R /usr/local/hadoop/
+    - chmod g+rwx -R /usr/local/hadoop/
+  become: yes
+
+- name: "Adicionar master e slaves do Hadoop no arquivo hosts"
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    insertbefore: '# The following lines are desirable for IPv6 capable hosts'
+    line: "{{ item }}"
+  loop:
+    - 172.17.177.40 hadoop-master
+    - 172.17.177.41 hadoop-slave1
+    - 172.17.177.42 hadoop-slave2
+  become: yes

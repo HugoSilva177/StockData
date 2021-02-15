@@ -1,0 +1,5 @@
+---
+- name: "Adicionar nome no hostname do hadoop-master"
+  ansible.builtin.lineinfile:
+    path: /etc/hostname
+    line: hadoop-master
