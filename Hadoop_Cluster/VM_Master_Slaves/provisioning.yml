@@ -1,4 +1,10 @@
 ---
-- hosts: hadoop-cluster
+- hosts:
+    - hadoop-master
+    - hadoop-slaves
   roles:
-    - all
+    - common
+
+- hosts: hadoop-master
+  roles:
+    - hadoop-master

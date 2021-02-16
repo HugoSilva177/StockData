@@ -1,8 +1,10 @@
-[hadoop-cluster]
+[hadoop-master]
 172.17.177.40
+
+[hadoop-slaves]
 172.17.177.41
 172.17.177.42
 
-[hadoop-cluster:vars]
+[all:vars]
 ansible_user=vagrant
 ansible_ssh_private_key_file="/home/hugo/.ssh/id_rsa"

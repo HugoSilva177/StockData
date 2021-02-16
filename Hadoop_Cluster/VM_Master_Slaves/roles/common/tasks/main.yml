@@ -15,3 +15,8 @@
     path: /etc/hostname
     line: "{{ ansible_hostname }}"
   become: yes
+
+- name: "Reiniciando Master e Slaves após configurar hostname"
+  reboot:
+    reboot_timeout: 30
+  become: yes
