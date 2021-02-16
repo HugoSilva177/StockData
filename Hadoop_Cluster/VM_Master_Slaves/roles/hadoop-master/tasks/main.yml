@@ -18,8 +18,7 @@
 #- name:
 #  shell: ssh-copy-id hadoopuser@{{ item }}
 #  loop:
-#    - hadoop-master
-#    - hadoop-slave1
-#    - hadoop-slave2
+#    - 172.17.177.40
+#    - 172.17.177.41
+#    - 172.17.177.42
 #  become: yes
-#  become_user: hadoopuser

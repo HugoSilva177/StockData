@@ -79,6 +79,7 @@
 - name: "Adicionar usuário hadoopuser, home folder e suas configurações"
   ansible.builtin.user:
     name: hadoopuser
+    password: hadoopuser
     shell: /bin/bash
     groups: hadoopuser,sudo
     append: yes

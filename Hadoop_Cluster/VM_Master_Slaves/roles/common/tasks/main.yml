@@ -18,5 +18,5 @@
 
 - name: "Reiniciando Master e Slaves após configurar hostname"
   reboot:
-    reboot_timeout: 30
+    reboot_timeout: 90
   become: yes
