@@ -1,0 +1,5 @@
+---
+hadoop_hostname_list:
+  - 172.17.177.40 hadoop-master
+  - 172.17.177.41 hadoop-slave1
+  - 172.17.177.42 hadoop-slave2

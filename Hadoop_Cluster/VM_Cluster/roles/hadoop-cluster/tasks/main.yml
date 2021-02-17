@@ -78,8 +78,9 @@
 
 - name: "Adicionar usuário hadoopuser, home folder e suas configurações"
   ansible.builtin.user:
-    name: hadoopuser
-    password: hadoopuser
+    name: "{{ hadoop_username }}"
+    password: "{{ hadoop_password | password_hash('sha512') }}"
+    generate_ssh_key: yes
     shell: /bin/bash
     groups: hadoopuser,sudo
     append: yes
