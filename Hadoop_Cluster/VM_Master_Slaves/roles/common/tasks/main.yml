@@ -4,7 +4,7 @@
     path: /etc/hosts
     insertbefore: '# The following lines are desirable for IPv6 capable hosts'
     line: "{{ item }}"
-  with_items: "{{ hadoop_hostname_list }}"
+  with_items: "{{ hadoop_ip_hostname_list }}"
   become: yes
 
 - name: "Adicionar hostname do master e slaves no arquivo /etc/hostname"
@@ -15,7 +15,7 @@
 
 - name: "Reiniciando Master e Slaves após configurar hostname"
   reboot:
-    reboot_timeout: 30
+    reboot_timeout: 90
   become: yes
 
 - name: "Aidionar SSH key do hadoopuser nas VMs"
