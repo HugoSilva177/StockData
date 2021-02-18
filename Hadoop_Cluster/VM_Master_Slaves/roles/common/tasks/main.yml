@@ -18,7 +18,16 @@
     reboot_timeout: 90
   become: yes
 
-- name: "Aidionar SSH key do hadoopuser nas VMs"
+- name: "Adicionar SSH key do hadoopuser nas VMs"
   shell: cat /home/hadoopuser/.ssh/id_rsa.pub >> /home/hadoopuser/.ssh/authorized_keys
+  become: yes
+  become_user: hadoopuser
+
+- name: "Copiar arquivos de configuração Hadoop"
+  copy:
+    src: "{{ item }}"
+    dest: "/usr/local/hadoop/etc/hadoop/"
+  with_fileglob:
+    - "files/*"
   become: yes
   become_user: hadoopuser

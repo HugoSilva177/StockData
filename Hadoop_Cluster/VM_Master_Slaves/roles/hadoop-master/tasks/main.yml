@@ -1,5 +1,5 @@
 ---
-- name:
+- name: "Adicionar SSH key dos Slaves no known_hosts do Master"
   shell: ssh-keyscan -H "{{ item }}" >> /home/hadoopuser/.ssh/known_hosts
   with_items:
     - hadoop-master
@@ -7,44 +7,12 @@
   become: yes
   become_user: hadoopuser
 
-- name: "Adicionar configuração no arquivo core-site.xml do hadoop"
-  ansible.builtin.lineinfile:
-    path: /usr/local/hadoop/etc/hadoop/core-site.xml
-    insertafter: '<configuration>'
-    line: "{{ item }}"
-  with_items:
-    - <property>
-    - <name>fs.defaultFS</name>
-    - <value>hdfs://hadoop-master:9000</value>
-    - </property>
-  become: yes
-  become_user: hadoopuser
-
-- name: "Adicionar configuração no arquivo hdfs-site.xml do hadoop"
-  ansible.builtin.lineinfile:
-    path: /usr/local/hadoop/etc/hadoop/hdfs-site.xml
-    insertafter: '<configuration>'
-    line: "{{ item }}"
-  with_items:
-    - <property>
-    - <name>dfs.namenode.name.dir</name><value>/usr/local/hadoop/data/nameNode</value>
-    - </property>
-    - <property>
-    - <name>dfs.datanode.data.dir</name><value>/usr/local/hadoop/data/dataNode</value>
-    - </property>
-    - <property>
-    - <name>dfs.replication</name>
-    - <value>2</value>
-    - </property>
-  become: yes
-  become_user: hadoopuser
-
-- name: "Apagar conteúdo do arquivo workers"
+- name: "Limpar conteúdo do arquivo workers no Master"
   shell: cat /dev/null > /usr/local/hadoop/etc/hadoop/workers
   become: yes
   become_user: hadoopuser
 
-- name: "Adicionar configuração no arquivo workers do hadoop"
+- name: "Adicionar configuração no arquivo workers no Master"
   ansible.builtin.lineinfile:
     path: /usr/local/hadoop/etc/hadoop/workers
     line: "{{ item }}"
@@ -52,17 +20,8 @@
   become: yes
   become_user: hadoopuser
 
-- name: "Copy file from machine1 to machine2"
-  shell: scp /usr/local/hadoop/etc/hadoop/workers hadoopuser@172.17.177.41:/usr/local/hadoop/etc/hadoop/
+- name: "Copiar arquivo workers do Master para Slaves"
+  shell: scp /usr/local/hadoop/etc/hadoop/workers hadoopuser@"{{ item }}":/usr/local/hadoop/etc/hadoop/
+  with_items: "{{ hadoop_slaves_hostname_list }}"
   become: yes
   become_user: hadoopuser
-
-
-#- name: "Copy the file from mwiapp01 to mwiapp02 using Method Push"
-#  ansible.posix.synchronize:
-#    src: hadoopuser@172.17.177.40:/usr/local/hadoop/etc/hadoop/
-#    dest: hadoopuser@172.17.177.41:/usr/local/hadoop/etc/hadoop/
-#    mode: pull
-#  delegate_to: 172.17.177.41
-#  become: yes
-#  become_user: hadoopuser
