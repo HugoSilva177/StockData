@@ -4,6 +4,11 @@ hadoop_ip_hostname_list:
   - 172.17.177.41 hadoop-slave1
   - 172.17.177.42 hadoop-slave2
 
+hadoop_all_hostname_list:
+  - hadoop-master
+  - hadoop-slave1
+  - hadoop-slave2
+
 hadoop_slaves_hostname_list:
   - hadoop-slave1
   - hadoop-slave2

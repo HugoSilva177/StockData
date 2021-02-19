@@ -24,10 +24,11 @@
   become_user: hadoopuser
 
 - name: "Copiar arquivos de configuração Hadoop"
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "/usr/local/hadoop/etc/hadoop/"
+    owner: hadoopuser
+    group: root
   with_fileglob:
     - "files/*"
   become: yes
-  become_user: hadoopuser

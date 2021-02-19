@@ -2,8 +2,7 @@
 - name: "Adicionar SSH key dos Slaves no known_hosts do Master"
   shell: ssh-keyscan -H "{{ item }}" >> /home/hadoopuser/.ssh/known_hosts
   with_items:
-    - hadoop-master
-    - "{{ hadoop_slaves_hostname_list }}"
+    - "{{ hadoop_all_hostname_list }}"
   become: yes
   become_user: hadoopuser
 
@@ -25,3 +24,7 @@
   with_items: "{{ hadoop_slaves_hostname_list }}"
   become: yes
   become_user: hadoopuser
+
+- name: "Mudar grupo e usuário proprietário do arquivo workers"
+  command: chown hadoopuser:root -R /usr/local/hadoop/etc/hadoop/workers
+  become: yes
