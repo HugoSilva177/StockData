@@ -1,2 +1,0 @@
-[hadoop-cluster]
-172.17.177.39 ansible_user=vagrant ansible_ssh_private_key_file="/home/hugo/Documents/Repositorios_GitHub/Projetos/02-StockData/Hadoop_Cluster/VM_Cluster/.vagrant/machines/hadoop-cluster/virtualbox/private_key"

@@ -7,11 +7,11 @@ Vagrant.configure("2") do |config|
                   ]
     end
 
-    config.vm.define "hadoop-cluster" do |hc|
+    config.vm.define "hadoop-master" do |hc|
       hc.vm.box = "bento/ubuntu-18.04"
-      hc.vm.hostname = "hadoop-cluster"
+      hc.vm.hostname = "hadoop-master"
       # Definindo a rede como private e o ip
-      hc.vm.network "private_network", ip: "172.17.177.39"
+      hc.vm.network "private_network", ip: "172.17.177.40"
     end
 
 end

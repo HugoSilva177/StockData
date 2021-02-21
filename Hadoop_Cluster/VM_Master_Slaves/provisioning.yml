@@ -4,7 +4,3 @@
     - hadoop-slaves
   roles:
     - common
-
-- hosts: hadoop-master
-  roles:
-    - hadoop-master

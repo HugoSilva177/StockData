@@ -1,4 +1,0 @@
----
-- hosts: hadoop-cluster
-  roles:
-    - hadoop-cluster

@@ -4,7 +4,7 @@
     name:
       - ssh
       - pdsh
-      - openjdk-8-jdk
+      - openjdk-8-jdk # CONFIRMAR INSTALAÇÃO!!!!
     state: latest
   become: yes
 
@@ -14,11 +14,11 @@
     line: export PDSH_RCMD_TYPE=ssh
 
 - name: "Copiar chaves públicas dos hosts para a VM"
-  copy:
+  ansible.builtin.copy:
     src: "{{ item }}"
     dest: "/home/vagrant/.ssh/"
   with_fileglob:
-    - "files/*"
+    - "files/ssh_keys/*"
   become: yes
 
 - name: "Verificar se chave pública já existe"
@@ -60,17 +60,21 @@
 - name: "Incluir JAVA_HOME no arquivo hadoop-env.sh"
   ansible.builtin.lineinfile:
     path: /usr/local/hadoop/etc/hadoop/hadoop-env.sh
-    regexp: '^#  JAVA_HOME='
-    line: export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    regexp: '^# export JAVA_HOME='
+    line: export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/
   become: yes
 
-- name: "Adicionando JAVA_HOME no arquivo environment"
-  ansible.builtin.lineinfile:
-    path: /etc/environment
-    line: JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/jre"
+- name: "Copiar arquivo de configuração environment"
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/etc/"
+    owner: root
+    group: root
+  with_fileglob:
+    - "files/config/*"
   become: yes
 
-- name: "Garantir que o grupo hadoopuser seja criado"
+- name: "Criar grupo de usuários hadoopuser"
   group:
     name: hadoopuser
     state: present

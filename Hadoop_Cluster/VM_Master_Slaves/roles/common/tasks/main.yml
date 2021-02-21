@@ -7,21 +7,18 @@
   with_items: "{{ hadoop_ip_hostname_list }}"
   become: yes
 
-- name: "Adicionar hostname do master e slaves no arquivo /etc/hostname"
-  ansible.builtin.lineinfile:
-    path: /etc/hostname
-    line: "{{ ansible_hostname }}"
+- name: Replace after the expression till the end of the file
+  ansible.builtin.replace:
+    path: /etc/hosts
+    after: 'ff02::2 ip6-allrouters'
+    regexp: '^(.+)$'
+    replace: '#'
   become: yes
 
-- name: "Reiniciando Master e Slaves após configurar hostname"
-  reboot:
-    reboot_timeout: 90
-  become: yes
-
-- name: "Adicionar SSH key do hadoopuser nas VMs"
-  shell: cat /home/hadoopuser/.ssh/id_rsa.pub >> /home/hadoopuser/.ssh/authorized_keys
-  become: yes
-  become_user: hadoopuser
+#- name: "Reiniciando Master e Slaves após configurar hostname"
+#  reboot:
+#    reboot_timeout: 30
+#  become: yes
 
 - name: "Copiar arquivos de configuração Hadoop"
   ansible.builtin.copy:
@@ -32,3 +29,22 @@
   with_fileglob:
     - "files/*"
   become: yes
+
+- name: "Adicionar SSH key dos Slaves no known_hosts do Master"
+  shell: ssh-keyscan -H "{{ item }}" >> /home/hadoopuser/.ssh/known_hosts
+  with_items:
+    - "{{ master_slaves_hostname_list }}"
+  become: yes
+  become_user: hadoopuser
+
+- name: "Verificar se o arquivo authorized_keys já existe"
+  stat: path=/home/hadoopuser/.ssh/authorized_keys
+  register: authorized_keys_created
+  become: yes
+  become_user: hadoopuser
+
+- name: "Copiar SSH key para o authorized_keys"
+  shell: cat /home/hadoopuser/.ssh/id_rsa.pub >> /home/hadoopuser/.ssh/authorized_keys
+  when: authorized_keys_created.stat.exists == False
+  become: yes
+  become_user: hadoopuser
