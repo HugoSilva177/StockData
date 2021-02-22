@@ -15,10 +15,10 @@
     replace: '#'
   become: yes
 
-#- name: "Reiniciando Master e Slaves após configurar hostname"
-#  reboot:
-#    reboot_timeout: 30
-#  become: yes
+- name: "Reiniciando Master e Slaves após configurar hostname"
+  reboot:
+    reboot_timeout: 30
+  become: yes
 
 - name: "Copiar arquivos de configuração Hadoop"
   ansible.builtin.copy:
