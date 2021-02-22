@@ -1,0 +1,12 @@
+---
+- name: "Verificar se o HDFS do Hadoop já foi formatado"
+  stat: path=/usr/local/hadoop/data/
+  register: hdfs_formatted
+  become: yes
+  become_user: hadoopuser
+
+- name: "Formatar o HDFS do Hadoop"
+  command: hdfs namenode -format
+  when: hdfs_formatted.stat.exists == False
+  become: yes
+  become_user: hadoopuser

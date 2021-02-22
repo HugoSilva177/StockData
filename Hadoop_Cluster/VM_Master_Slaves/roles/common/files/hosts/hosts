@@ -1,0 +1,10 @@
+127.0.0.1	localhost
+
+172.17.177.40   hadoop-master
+172.17.177.41   hadoop-slave1
+172.17.177.42   hadoop-slave2
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters

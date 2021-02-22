@@ -1,23 +1,17 @@
 ---
-- name: "Adicionar master e slaves do Hadoop no arquivo hosts"
-  ansible.builtin.lineinfile:
-    path: /etc/hosts
-    insertbefore: '# The following lines are desirable for IPv6 capable hosts'
-    line: "{{ item }}"
-  with_items: "{{ hadoop_ip_hostname_list }}"
-  become: yes
-
-- name: Replace after the expression till the end of the file
-  ansible.builtin.replace:
-    path: /etc/hosts
-    after: 'ff02::2 ip6-allrouters'
-    regexp: '^(.+)$'
-    replace: '#'
+- name: "Copiar arquivos de configuração /etc/hosts"
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/etc/"
+    owner: root
+    group: root
+  with_fileglob:
+    - "files/hosts/*"
   become: yes
 
 - name: "Reiniciando Master e Slaves após configurar hostname"
   reboot:
-    reboot_timeout: 30
+    reboot_timeout: 90
   become: yes
 
 - name: "Copiar arquivos de configuração Hadoop"
@@ -27,7 +21,7 @@
     owner: hadoopuser
     group: root
   with_fileglob:
-    - "files/*"
+    - "files/hadoop/*"
   become: yes
 
 - name: "Adicionar SSH key dos Slaves no known_hosts do Master"

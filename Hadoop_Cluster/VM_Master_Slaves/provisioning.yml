@@ -4,3 +4,8 @@
     - hadoop-slaves
   roles:
     - common
+
+- hosts:
+    - hadoop-master
+  roles:
+    - start-hdfs
