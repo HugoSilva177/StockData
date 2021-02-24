@@ -3,9 +3,14 @@
     - hadoop-master
     - hadoop-slaves
   roles:
-    - common
+    - common-tasks
 
 - hosts:
     - hadoop-master
   roles:
-    - start-hdfs
+    - master-tasks
+
+- hosts:
+    - hadoop-slaves
+  roles:
+    - slave-tasks

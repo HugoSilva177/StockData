@@ -1,0 +1,29 @@
+---
+- name: "Verificar se o HDFS do Hadoop já foi formatado"
+  stat: path=/usr/local/hadoop/data/
+  register: hdfs_formatted
+  become: yes
+  become_user: hadoopuser
+
+- name: "Formatar o HDFS do Hadoop"
+  command: hdfs namenode -format
+  when: hdfs_formatted.stat.exists == False
+  become: yes
+  become_user: hadoopuser
+
+- name: "Configurar variáveis de ambiente para o Yarn"
+  shell: "{{ item }}"
+  loop:
+    - export HADOOP_HOME="/usr/local/hadoop"
+    - export HADOOP_COMMON_HOME=$HADOOP_HOME
+    - export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+    - export HADOOP_HDFS_HOME=$HADOOP_HOME
+    - export HADOOP_MAPRED_HOME=$HADOOP_HOME
+    - export HADOOP_YARN_HOME=$HADOOP_HOME
+  when: hdfs_formatted.stat.exists == False
+  become: yes
+  become_user: hadoopuser
+
+# Iniciar o Hadoop HDFS e Yarn (como usuário hadoopuser)
+# start-dfs.sh
+# start-yarn.sh
