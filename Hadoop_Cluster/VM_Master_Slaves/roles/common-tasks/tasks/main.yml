@@ -37,7 +37,7 @@
   become: yes
   become_user: hadoopuser
 
-- name: "Copiar SSH key para o authorized_keys"
+- name: "Copiar SSH key do hadoopuser para o authorized_keys caso ainda não exista"
   shell: cat /home/hadoopuser/.ssh/id_rsa.pub >> /home/hadoopuser/.ssh/authorized_keys
   when: authorized_keys_created.stat.exists == False
   become: yes
