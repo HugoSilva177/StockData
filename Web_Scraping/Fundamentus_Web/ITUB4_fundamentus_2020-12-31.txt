@@ -109,37 +109,37 @@
 <td class="label w15"><span class="help tips" title="Código da ação">?</span><span class="txt">Papel</span></td>
 <td class="data w35"><span class="txt">ITUB4</span></td>
 <td class="label destaque w2"><span class="help tips" title="Cotação de fechamento da ação no último pregão">?</span><span class="txt">Cotação</span></td>
-<td class="data destaque w3"><span class="txt">26,08</span></td>
+<td class="data destaque w3"><span class="txt">25,55</span></td>
 </tr>
 <tr>
 <td class="label"><span class="help tips" title="ON = Ordinária, PN = Preferencial, PNA = Pref. tipo A, etc">?</span><span class="txt">Tipo</span></td>
 <td class="data"><span class="txt">PN N1</span></td>
 <td class="label"><span class="help tips" title="Data do último pregão em  que o ativo foi negociado">?</span><span class="txt">Data últ cot</span></td>
-<td class="data"><span class="txt">25/02/2021</span></td>
+<td class="data"><span class="txt">26/02/2021</span></td>
 </tr>
 <tr>
 <td class="label"><span class="help tips" title="Nome comercial da empresa.">?</span><span class="txt">Empresa</span></td>
 <td class="data"><span class="txt">ITAUUNIBANCO PN N1</span></td>
 <td class="label"><span class="help tips" title="Menor cotação da ação nos últimos 12 meses.">?</span><span class="txt">Min 52 sem</span></td>
-<td class="data"><span class="txt">20,36</span></td>
+<td class="data"><span class="txt">20,25</span></td>
 </tr>
 <tr>
 <td class="label"><span class="help tips" title="Classificação setorial">?</span><span class="txt">Setor</span></td>
 <td class="data"><span class="txt"><a href="resultado.php?setor=20">Intermediários Financeiros</a></span></td>
 <td class="label"><span class="help tips" title="Maior cotação da ação nos últimos 12 meses">?</span><span class="txt">Max 52 sem</span></td>
-<td class="data"><span class="txt">32,78</span></td>
+<td class="data"><span class="txt">32,60</span></td>
 </tr>
 <tr>
 <td class="label"><span class="help tips" title="Classificação por segmento de atuação.">?</span><span class="txt">Subsetor</span></td>
 <td class="data"><span class="txt"><a href="resultado.php?segmento=33">Bancos</a></span></td>
 <td class="label"><span class="help tips" title="Volume médio de negociação da ação nos últimos 2 meses (R$)">?</span><span class="txt">Vol $ méd (2m)</span></td>
-<td class="data"><span class="txt">1.160.530.000</span></td>
+<td class="data"><span class="txt">1.162.660.000</span></td>
 </tr>
 </table>
 <table class="w728">
 <tr>
 <td class="label w2"><span class="help tips" title="Valor de mercado da empresa, calculado multiplicando o preço da ação pelo número total de ações.">?</span><span class="txt">Valor de mercado</span></td>
-<td class="data w3"><span class="txt">255.692.000.000</span></td>
+<td class="data w3"><span class="txt">250.496.000.000</span></td>
 <td class="label w3"><span class="help tips" title="Data do último balanço divulgado pela empresa que consta no nosso banco de dados. Todos os indicadores são calculados considerando os últimos 12 meses finalizados na data deste balanço.">?</span><span class="txt">Últ balanço processado</span></td>
 <td class="data w2"><span class="txt">31/12/2020</span></td>
 </tr>
@@ -157,23 +157,23 @@
 </tr>
 <tr>
 <td class="label w1"><span class="txt">Dia</span></td>
-<td class="data w1"><span class="oscil"><font color="#F75D59">-2,87%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#F75D59">-1,50%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelo lucro por ação. O P/L é o número de anos que se levaria para reaver o capital aplicado na compra de uma ação, através do recebimento do lucro gerado pela empresa, considerando que esses lucros permaneçam constantes.">?</span><span class="txt">P/L</span></td>
-<td class="data w2"><span class="txt">13,49</span></td>
+<td class="data w2"><span class="txt">13,21</span></td>
 <td class="label w2"><span class="help tips" title="Lucro por Ação">?</span><span class="txt">LPA</span></td>
 <td class="data w2"><span class="txt">1,93</span></td>
 </tr>
 <tr>
 <td class="label w1"><span class="txt">Mês</span></td>
-<td class="data w1"><span class="oscil"><font color="#F75D59">-7,97%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#F75D59">-9,36%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelo Valor Patrimonial por ação. Informa quanto o mercado está disposto a pagar sobre o Patrimônio Líquido da empresa">?</span><span class="txt">P/VP</span></td>
-<td class="data w2"><span class="txt">1,87</span></td>
+<td class="data w2"><span class="txt">1,83</span></td>
 <td class="label w2"><span class="help tips" title="Valor Patrimonial por Ação: Valor do Patrimônio Líquido dividido pelo número total de ações.">?</span><span class="txt">VPA</span></td>
 <td class="data w2"><span class="txt">13,94</span></td>
 </tr>
 <tr>
 <td class="label w1"><span class="txt">30 dias</span></td>
-<td class="data w1"><span class="oscil"><font color="#F75D59">-10,77%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#F75D59">-9,07%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelo EBIT por ação. EBIT é o Lucro antes dos Impostos e Despesas Financeiras. É uma boa aproximação do lucro operacional da empresa.">?</span><span class="txt">P/EBIT</span></td>
 <td class="data w2"><span class="txt">
 -</span></td>
@@ -183,7 +183,7 @@
 </tr>
 <tr>
 <td class="label w1"><span class="txt">12 meses</span></td>
-<td class="data w1"><span class="oscil"><font color="#F75D59">-19,53%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#F75D59">-16,58%</font></span></td>
 <td class="label"><span class="help tips" title="Price Sales Ratio: Preço da ação dividido pela Receita Líquida por ação">?</span><span class="txt">PSR</span></td>
 <td class="data"><span class="txt">
 -</span></td>
@@ -193,7 +193,7 @@
 </tr>
 <tr>
 <td class="label w1"><span class="txt">2021</span></td>
-<td class="data w1"><span class="oscil"><font color="#F75D59">-17,42%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#F75D59">-18,66%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelos Ativos totais por ação.">?</span><span class="txt">P/Ativos</span></td>
 <td class="data w2"><span class="txt">
 -</span></td>
@@ -224,7 +224,7 @@
 <td class="label w1"><span class="txt">2018</span></td>
 <td class="data w1"><span class="oscil"><font color="#306EFF">32,41%</font></span></td>
 <td class="label"><span class="help tips" title="Dividend Yield: Dividendo pago por ação dividido pelo preço da ação. É o rendimento gerado para o dono da ação pelo pagamento de dividendos.">?</span><span class="txt">Div. Yield</span></td>
-<td class="data"><span class="txt">1,3%</span></td>
+<td class="data"><span class="txt">2,0%</span></td>
 <td class="label"><span class="help tips" title="Retorno sobre o Patrimônio Líquido: Lucro líquido dividido pelo Patrimônio Líquido">?</span><span class="txt">ROE</span></td>
 <td class="data"><span class="txt">
 13,9%</span></td>
@@ -355,5 +355,5 @@ window.onload = function() {
     pageTracker._trackPageview();
   </script>
 <script type="text/javascript" src="script/pvt.php" language="JavaScript" async></script>
-<script type="text/javascript">(function(){window['__CF$cv$params']={r:'627a65ec0c404cf1',m:'329be4da7ad1e26f9aff74010c24e7150e606884-1614350184-1800-Acgih/6e9ChFXJh9OpZA0EdaSGwhGE6FOVvXw7qS4fSlA44C0kd+2lT9NpPk9hA46Q5SSPXlcNTTE0JKjnq4cjR2eROfL1UcwGNp+JRwY64DiJtHKLM/bTyNa3JcFw6rvtBz0ZvVyz+K/t80NCAPat0=',s:[0x5b65273f01,0xaa09d39bed],}})();</script></body>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'6283910abab8f6bb',m:'f2bd97ea29375a0da91a83827dfd203f4c764df5-1614446322-1800-AemN15GYfD/mqd/mN7HiEaoDgTqQyGggtMMADwR2s4KgLROcfmapjoTzqshvjGcRp2H85FHGMc8BRKYAXMK++IUrSsbQrepCwEhkw08unKlrFgSaRB2+2wz910u2DNgPv56BxmvMHBJZ1Fm0cOoU5f0=',s:[0xa5ce49a01b,0x70608783e9],}})();</script></body>
 </html>
