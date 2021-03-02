@@ -109,13 +109,13 @@
 <td class="label w15"><span class="help tips" title="Código da ação">?</span><span class="txt">Papel</span></td>
 <td class="data w35"><span class="txt">GGBR4</span></td>
 <td class="label destaque w2"><span class="help tips" title="Cotação de fechamento da ação no último pregão">?</span><span class="txt">Cotação</span></td>
-<td class="data destaque w3"><span class="txt">26,12</span></td>
+<td class="data destaque w3"><span class="txt">25,87</span></td>
 </tr>
 <tr>
 <td class="label"><span class="help tips" title="ON = Ordinária, PN = Preferencial, PNA = Pref. tipo A, etc">?</span><span class="txt">Tipo</span></td>
 <td class="data"><span class="txt">PN N1</span></td>
 <td class="label"><span class="help tips" title="Data do último pregão em  que o ativo foi negociado">?</span><span class="txt">Data últ cot</span></td>
-<td class="data"><span class="txt">25/02/2021</span></td>
+<td class="data"><span class="txt">26/02/2021</span></td>
 </tr>
 <tr>
 <td class="label"><span class="help tips" title="Nome comercial da empresa.">?</span><span class="txt">Empresa</span></td>
@@ -133,19 +133,19 @@
 <td class="label"><span class="help tips" title="Classificação por segmento de atuação.">?</span><span class="txt">Subsetor</span></td>
 <td class="data"><span class="txt"><a href="resultado.php?segmento=67">Siderurgia</a></span></td>
 <td class="label"><span class="help tips" title="Volume médio de negociação da ação nos últimos 2 meses (R$)">?</span><span class="txt">Vol $ méd (2m)</span></td>
-<td class="data"><span class="txt">400.075.000</span></td>
+<td class="data"><span class="txt">402.679.000</span></td>
 </tr>
 </table>
 <table class="w728">
 <tr>
 <td class="label w2"><span class="help tips" title="Valor de mercado da empresa, calculado multiplicando o preço da ação pelo número total de ações.">?</span><span class="txt">Valor de mercado</span></td>
-<td class="data w3"><span class="txt">44.917.500.000</span></td>
+<td class="data w3"><span class="txt">44.487.600.000</span></td>
 <td class="label w3"><span class="help tips" title="Data do último balanço divulgado pela empresa que consta no nosso banco de dados. Todos os indicadores são calculados considerando os últimos 12 meses finalizados na data deste balanço.">?</span><span class="txt">Últ balanço processado</span></td>
 <td class="data w2"><span class="txt">31/12/2020</span></td>
 </tr>
 <tr>
 <td class="label w2"><span class="help tips" title="Valor da firma (Enterprise Value) é calculado somando o valor de mercado da empresa a sua dívida líquida.">?</span><span class="txt">Valor da firma</span></td>
-<td class="data w3"><span class="txt">54.774.500.000</span></td>
+<td class="data w3"><span class="txt">54.344.600.000</span></td>
 <td class="label"><span class="help tips" title="Número total de ações, somadas todas as espécies: ON, PN, etc">?</span><span class="txt">Nro. Ações</span></td>
 <td class="data"><span class="txt">1.719.660.000</span></td>
 </tr>
@@ -157,46 +157,46 @@
 </tr>
 <tr>
 <td class="label w1"><span class="txt">Dia</span></td>
-<td class="data w1"><span class="oscil"><font color="#F75D59">-3,76%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#F75D59">-0,96%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelo lucro por ação. O P/L é o número de anos que se levaria para reaver o capital aplicado na compra de uma ação, através do recebimento do lucro gerado pela empresa, considerando que esses lucros permaneçam constantes.">?</span><span class="txt">P/L</span></td>
-<td class="data w2"><span class="txt">18,99</span></td>
+<td class="data w2"><span class="txt">18,80</span></td>
 <td class="label w2"><span class="help tips" title="Lucro por Ação">?</span><span class="txt">LPA</span></td>
 <td class="data w2"><span class="txt">1,38</span></td>
 </tr>
 <tr>
 <td class="label w1"><span class="txt">Mês</span></td>
-<td class="data w1"><span class="oscil"><font color="#306EFF">12,34%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#306EFF">11,27%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelo Valor Patrimonial por ação. Informa quanto o mercado está disposto a pagar sobre o Patrimônio Líquido da empresa">?</span><span class="txt">P/VP</span></td>
-<td class="data w2"><span class="txt">1,46</span></td>
+<td class="data w2"><span class="txt">1,44</span></td>
 <td class="label w2"><span class="help tips" title="Valor Patrimonial por Ação: Valor do Patrimônio Líquido dividido pelo número total de ações.">?</span><span class="txt">VPA</span></td>
 <td class="data w2"><span class="txt">17,95</span></td>
 </tr>
 <tr>
 <td class="label w1"><span class="txt">30 dias</span></td>
-<td class="data w1"><span class="oscil"><font color="#306EFF">3,00%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#306EFF">7,57%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelo EBIT por ação. EBIT é o Lucro antes dos Impostos e Despesas Financeiras. É uma boa aproximação do lucro operacional da empresa.">?</span><span class="txt">P/EBIT</span></td>
 <td class="data w2"><span class="txt">
-10,21</span></td>
+10,11</span></td>
 <td class="label"><span class="help tips" title="Lucro Bruto dividido pela Receita Líquida: Indica a porcentagem de cada R$1 de venda que sobrou após o custo dos produtos/serviços vendidos">?</span><span class="txt">Marg. Bruta</span></td>
 <td class="data"><span class="txt">
 13,5%</span></td>
 </tr>
 <tr>
 <td class="label w1"><span class="txt">12 meses</span></td>
-<td class="data w1"><span class="oscil"><font color="#306EFF">38,55%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#306EFF">53,28%</font></span></td>
 <td class="label"><span class="help tips" title="Price Sales Ratio: Preço da ação dividido pela Receita Líquida por ação">?</span><span class="txt">PSR</span></td>
 <td class="data"><span class="txt">
-1,03</span></td>
+1,02</span></td>
 <td class="label"><span class="help tips" title="EBIT dividido pela Receita Líquida: Indica a porcentagem de cada R$1 de venda que sobrou após o pagamento dos custos dos produtos/serviços vendidos, das despesas com vendas, gerais e administrativas">?</span><span class="txt">Marg. EBIT</span></td>
 <td class="data"><span class="txt">
 10,0%</span></td>
 </tr>
 <tr>
 <td class="label w1"><span class="txt">2021</span></td>
-<td class="data w1"><span class="oscil"><font color="#306EFF">6,83%</font></span></td>
+<td class="data w1"><span class="oscil"><font color="#306EFF">5,81%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelos Ativos totais por ação.">?</span><span class="txt">P/Ativos</span></td>
 <td class="data w2"><span class="txt">
-0,71</span></td>
+0,70</span></td>
 <td class="label"><span class="help tips" title="Lucro Líquido dividido pela Receita Líquida">?</span><span class="txt">Marg. Líquida</span></td>
 <td class="data"><span class="txt">
 5,5%</span></td>
@@ -206,7 +206,7 @@
 <td class="data w1"><span class="oscil"><font color="#306EFF">23,86%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelo capital de giro por ação. Capital de giro é o Ativo Circulante menos Passivo Circulante">?</span><span class="txt">P/Cap. Giro</span></td>
 <td class="data w2"><span class="txt">
-3,77</span></td>
+3,73</span></td>
 <td class="label"><span class="help tips" title="EBIT dividido por Ativos totais">?</span><span class="txt">EBIT / Ativo</span></td>
 <td class="data"><span class="txt">7,0%</span></td>
 </tr>
@@ -215,7 +215,7 @@
 <td class="data w1"><span class="oscil"><font color="#306EFF">37,65%</font></span></td>
 <td class="label w2"><span class="help tips" title="Preço da ação dividido pelos Ativos Circulantes Líquidos por ação. Ativo Circ. Líq. é obtido subtraindo os ativos circulantes pelas dívidas de curto e longo prazo, ou seja, após o pagamento de todas as dívidas, quanto sobraria dos ativos mais líquidos da empresa (caixa, estoque, etc)">?</span><span class="txt">P/Ativ Circ Liq</span></td>
 <td class="data w2"><span class="txt">
--5,21</span></td>
+-5,16</span></td>
 <td class="label"><span class="help tips" title="Retorno sobre o Capital Investido: Calculado dividindo-se o EBIT por (Ativos - Fornecedores - Caixa). Informa o retorno que a empresa consegue sobre o capital total aplicado.">?</span><span class="txt">ROIC</span></td>
 <td class="data"><span class="txt">
 8,8%</span></td>
@@ -234,7 +234,7 @@
 <td class="data w1"><span class="oscil"><font color="#306EFF">15,23%</font></span></td>
 <td class="label"><span class="help tips" title="Valor da Firma (Enterprise Value dividido pelo EBITDA.">?</span><span class="txt">EV / EBITDA</span></td>
 <td class="data"><span class="txt">
-8,01</span></td>
+7,94</span></td>
 <td class="label"><span class="help tips" title="Ativo Circulante dividido pelo Passivo Circulante: Reflete a capacidade de pagamento da empresa no curto prazo.">?</span><span class="txt">Liquidez Corr</span></td>
 <td class="data"><span class="txt">
 2,04</span></td>
@@ -244,7 +244,7 @@
 <td class="data w1"><span class="oscil"><font color="#306EFF">138,66%</font></span></td>
 <td class="label"><span class="help tips" title="Valor da Firma (Enterprise Value dividido pelo EBIT.">?</span><span class="txt">EV / EBIT</span></td>
 <td class="data"><span class="txt">
-12,45</span></td>
+12,35</span></td>
 <td class="label"><span class="help tips" title="Dívida Bruta total (Dívida+Debêntures) dividido pelo Patrimônio Líquido">?</span><span class="txt">Div Br/ Patrim</span></td>
 <td class="data"><span class="txt">
 0,57</span></td>
@@ -362,5 +362,5 @@ window.onload = function() {
     pageTracker._trackPageview();
   </script>
 <script type="text/javascript" src="script/pvt.php" language="JavaScript" async></script>
-<script type="text/javascript">(function(){window['__CF$cv$params']={r:'627a636d6c3f4d47',m:'f514e38f422d45634735f8f8d0d32a42f1b254c1-1614350082-1800-AT0Yo2EJbIiOuZBQYaSUlBXNr9OCOAtGzhpR/9LSirrITh75Mg4WNJ9goI5Cch2VXQezTVlMmU6vOuxWRgKjOufYchiuu2qrQaUOWwfIspZ6Ai7G/HRl/uVx6od7om2scj67fqP2+lW+J6dtxUmR26M=',s:[0xe6eaa96af6,0x62f4f24624],}})();</script></body>
+<script type="text/javascript">(function(){window['__CF$cv$params']={r:'62969e279f3f4b35',m:'4f71731fa5f88208a7441062fd662f6ddd98698c-1614646089-1800-AeLMD5o+DBfkmD1C+ijjMUhr44aGjEGj6KYGrnlV/aFE0SYTTFsDVEXuQ/xwG7VuhUfenOzvBFuBYzQAmLytWX7ypMtWmyR1z3JcpdsauCpwcr2Wctw+X1A5ZohDeMGt2QFrkQcDKj69e2UnARMy11w=',s:[0x5aff81b0bf,0x11fd144064],}})();</script></body>
 </html>
