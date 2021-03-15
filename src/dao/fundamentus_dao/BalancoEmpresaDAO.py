@@ -1,12 +1,12 @@
-from src.conexao_db.DAConexaoFactory import DAConexaoFactory
+from src.connect_db.DAConexaoFactory import DAConexaoFactory
 
-class BalancoEmpresaDAO():
+
+class BalancoEmpresaDAO:
 
     def __init__(self):
         self.__erro = None
         self.__con = None
         self.__factory = None
-
         try:
             conexao = DAConexaoFactory()
             self.__con = conexao.getConexao('mongodb', 'fundamentus')

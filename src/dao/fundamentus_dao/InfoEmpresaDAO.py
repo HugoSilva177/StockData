@@ -1,22 +1,22 @@
-from src.conexao_db.DAConexaoFactory import DAConexaoFactory
+from src.connect_db.DAConexaoMongo import DAConexaoMongo
 
-class InfoEmpresaDAO():
+
+class InfoEmpresaDAO:
 
     def __init__(self):
         self.__erro = None
-        self.__con = None
-        self.__factory = None
-
+        self.__colecao_mongo = None
         try:
-            conexao = DAConexaoFactory()
-            self.__con = conexao.getConexao('mongodb', 'fundamentus')
-            self.__factory = conexao.getFactory()
+            self.__colecao_mongo = DAConexaoMongo('fundamentus', 'info_empresa').get_colecao_mongo()
         except Exception:
-            self.__erro = 'Falha em estabelecer conexao com MongoDB'
+            self.__erro = "Falha em estabelecer conexao com a coleção 'dados_empresa' no MongoDB"
 
     def buscar_dados_empresa_por_papel(self, papel):
-        pass
-
+        dados_empresa = self.__colecao_mongo.find_one({"Papel": papel})
+        return dados_empresa
 
     def inserir_dados_empresa(self, info_empresa):
-        pass
+        self.__colecao_mongo.insert_one(info_empresa)
+
+    def get_erro(self):
+        return self.__erro

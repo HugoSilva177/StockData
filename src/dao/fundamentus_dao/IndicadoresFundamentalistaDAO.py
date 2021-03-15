@@ -1,4 +1,4 @@
-from src.conexao_db.DAConexaoFactory import DAConexaoFactory
+from src.connect_db.DAConexaoFactory import DAConexaoFactory
 
 class IndicadoresFundamentalistaDAO():
 
