@@ -1,25 +1,27 @@
 from src.connect_db.DAConexaoMongo import DAConexaoMongo
-from src.dao.fundamentus_dao.CotacaoEmpresaDAO import CotacaoEmpresaDAO
+from src.dao.fundamentus.AbstractMongoDAO import AbstractMongoDAO
+from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 
 
-class OscilacoesEmpresaDAO:
+class OscilacoesEmpresaDAO(AbstractMongoDAO):
 
-    def __init__(self):
+    def __init__(self, id_inserido_cotacao):
+        super().__init__()
         self.__erro = None
         self.__colecao_mongo = None
-        self.__cotadao_dao = CotacaoEmpresaDAO()
+        self.__cotacao_dao = CotacaoEmpresaDAO()
+        self.__id_inserido_cotacao = id_inserido_cotacao
         try:
             self.__colecao_mongo = DAConexaoMongo('fundamentus', 'oscilacoes_empresa').get_colecao_mongo()
         except Exception:
             self.__erro = "Falha em estabelecer conexao com a coleção 'oscilacoes_empresa' no MongoDB"
 
-    def inserir_oscilacoes_empresa_mongodb(self, oscilacoes_empresa, id_inserido_cotacao):
-        oscilacoes_empresa['Cotacao'] = id_inserido_cotacao
+    def inserir_dados(self, oscilacoes_empresa):
         id_inserido_oscilacao = self.__colecao_mongo.insert_one(oscilacoes_empresa).inserted_id
-        self.get_conexao_cotacao().inserir_oscilacoes_na_cotacao(id_inserido_cotacao, id_inserido_oscilacao)
+        self.get_conexao_cotacao().inserir_oscilacoes_na_cotacao(self.__id_inserido_cotacao, id_inserido_oscilacao)
 
     def get_conexao_cotacao(self):
-        return self.__cotadao_dao
+        return self.__cotacao_dao
 
     def get_erro(self):
         return self.__erro

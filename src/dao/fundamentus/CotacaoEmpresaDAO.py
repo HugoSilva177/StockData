@@ -1,17 +1,30 @@
+from src.dao.fundamentus.AbstractMongoDAO import AbstractMongoDAO
 from src.connect_db.DAConexaoMongo import DAConexaoMongo
 
 
-class CotacaoEmpresaDAO:
+class CotacaoEmpresaDAO(AbstractMongoDAO):
 
     def __init__(self):
+        super().__init__()
         self.__erro = None
         self.__colecao_mongo = None
-        self.__id_inserido_cotacao = None
         try:
             self.__colecao_mongo = DAConexaoMongo('fundamentus', 'cotacao_empresa').get_colecao_mongo()
         except Exception:
             self.__erro = "Falha em estabelecer conexao com a coleção 'cotacao_empresa' no MongoDB"
 
+
+    def inserir_dados(self, cotacao_empresa):
+        id_inserido_cotacao = self.__colecao_mongo.insert_one(cotacao_empresa).inserted_id
+        return id_inserido_cotacao
+
+    def inserir_oscilacoes_na_cotacao(self, id_inserido_cotacao, id_inserido_oscilacao):
+        self.__colecao_mongo.update_one({"_id": id_inserido_cotacao},
+                                        {"$set": {"Oscilacao": id_inserido_oscilacao}})
+
+    def inserir_indicadores_na_cotacao(self, id_inserido_cotacao, id_inserido_indicadores):
+        self.__colecao_mongo.update_one({"_id": id_inserido_cotacao},
+                                        {"$set": {"Indicador_Fundamentalista": id_inserido_indicadores}})
 
     def buscar_lista_cotacoes_empresa_por_papel(self, papel):
         lista_cotacoes = self.__colecao_mongo.find({"Papel": papel})
@@ -21,20 +34,6 @@ class CotacaoEmpresaDAO:
         cotacao_por_papel = self.__colecao_mongo.find_one({"Papel": papel,
                                                            "Data_ult_cot": data_cotacao})
         return cotacao_por_papel
-
-    def inserir_cotacao_empresa(self, cotacao_empresa):
-        self.__id_inserido_cotacao = self.__colecao_mongo.insert_one(cotacao_empresa).inserted_id
-
-    def inserir_oscilacoes_na_cotacao(self, id_inserido_cotacao, id_inserido_oscilacao):
-        self.__colecao_mongo.update_one({"_id": id_inserido_cotacao},
-                                        {"$set": {"Oscilacao": id_inserido_oscilacao}})
-
-    def inserir_indicadores_fundamentalistas_na_cotacao(self, id_inserido_indicadores, id_inserido_cotacao):
-        self.__colecao_mongo.update_one({"_id": id_inserido_cotacao},
-                                        {"$set": {"Indicador_Fundamentalista": id_inserido_indicadores}})
-
-    def get_id_inserido_cotacao(self):
-        return self.__id_inserido_cotacao
 
     def get_erro(self):
         return self.__erro

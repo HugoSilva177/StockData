@@ -1,5 +1,5 @@
 from src.web_scraping.fundamentus_web.WebScraping import WebScraping
-from src.business.DadosTransformacao import DadosTransformacao
+from src.etl.DadosTransformacao import DadosTransformacao
 
 
 class ExtractData(WebScraping):
