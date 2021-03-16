@@ -25,11 +25,11 @@ class CotacaoEmpresaDAO:
     def inserir_cotacao_empresa(self, cotacao_empresa):
         self.__id_inserido_cotacao = self.__colecao_mongo.insert_one(cotacao_empresa).inserted_id
 
-    def atualizar_oscilacao_na_cotacao(self, id_inserido_oscilacoes, id_inserido_cotacao):
+    def inserir_oscilacoes_na_cotacao(self, id_inserido_cotacao, id_inserido_oscilacao):
         self.__colecao_mongo.update_one({"_id": id_inserido_cotacao},
-                                        {"$set": {"Oscilacao": id_inserido_oscilacoes}})
+                                        {"$set": {"Oscilacao": id_inserido_oscilacao}})
 
-    def atualizar_indicadores_fundamentalistas_na_cotacao(self, id_inserido_indicadores, id_inserido_cotacao):
+    def inserir_indicadores_fundamentalistas_na_cotacao(self, id_inserido_indicadores, id_inserido_cotacao):
         self.__colecao_mongo.update_one({"_id": id_inserido_cotacao},
                                         {"$set": {"Indicador_Fundamentalista": id_inserido_indicadores}})
 

@@ -1,35 +1,26 @@
-from src.business.DadosTransformacao import DadosTransformacao
-from src.dao.fundamentus_dao.CotacaoEmpresaDAO import CotacaoEmpresaDAO
-from src.web_scraping.fundamentus_web.CotacaoEmpresaScraping import CotacaoEmpresaScraping
+from src.etl.CotacaoEmpresaETL import CotacaoEmpresaETL
+from src.etl.OscilacoesEmpresaETL import OscilacoesEmpresaETL
 
 
 class CotacaoEmpresaBusiness:
 
     def __init__(self, papel):
         self.__papel = papel
-        self.__extracao_dados = CotacaoEmpresaScraping(papel)
-        self.__transformacao_dados = DadosTransformacao()
-        self.__conexao_db = CotacaoEmpresaDAO()
+        self.__cotacao_etl = CotacaoEmpresaETL(papel)
+        self.__oscilacoes_etl = OscilacoesEmpresaETL(papel)
+
+    def iniciar_cotacao_scraping_etl(self):
+        cotacao_empresa_label, cotacao_empresa_dados = self.__cotacao_etl.extrair_dados_cotacao_empresa()
+        cotacao_empresa = self.__cotacao_etl.transformar_dados_cotacao_empresa(cotacao_empresa_label, cotacao_empresa_dados)
+        self.__cotacao_etl.adicionar_dados_cotacao_empresa_db(cotacao_empresa)
 
 
-    def iniciar_web_scraping_etl(self):
-        cotacao_empresa_label, cotacao_empresa_dados = self.__extrair_dados_cotacao_empresa()
-        cotacao_empresa = self.__transformar_dados_cotacao_empresa(cotacao_empresa_label, cotacao_empresa_dados)
-        self.__adicionar_dados_cotacao_empresa_db(cotacao_empresa)
+    def iniciar_oscilacoes_scraping_etl(self):
+        oscilacoes_empresa_label, oscilacoes_empresa_dados = self.__oscilacoes_etl.extrair_dados_oscilacoes_empresa( )
+        oscilacoes_empresa = self.__oscilacoes_etl.transformar_dados_oscilacoes_empresa(oscilacoes_empresa_label,
+                                                                         oscilacoes_empresa_dados)
+        self.__oscilacoes_etl.adicionar_dados_cotacao_empresa_db(oscilacoes_empresa)
 
-    def __extrair_dados_cotacao_empresa(self):
-        cotacao_empresa_label = self.__extracao_dados.extrair_cotacao_empresa_dados()
-        cotacao_empresa_dados = self.__extracao_dados.extrair_cotacao_empresa_dados()
-        return cotacao_empresa_label, cotacao_empresa_dados
 
-    def __transformar_dados_cotacao_empresa(self, cotacao_empresa_label, cotacao_empresa_dados):
-        cotacao_empresa_label = self.__transformacao_dados.remover_caracteres_especiais(cotacao_empresa_label)
-        cotacao_empresa_label.insert(0, 'Papel')
-        cotacao_empresa_dados.insert(0, self.__papel)
-        cotacao_empresa = self.__transformacao_dados.transformar_listas_em_dicionario(cotacao_empresa_label, cotacao_empresa_dados)
-        return cotacao_empresa
-
-    def __adicionar_dados_cotacao_empresa_db(self, info_empresa):
-        self.__conexao_db.inserir_cotacao_empresa(info_empresa)
 
 
