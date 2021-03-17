@@ -7,14 +7,14 @@ class OscilacoesEmpresaScraping(WebScraping):
         super().__init__(papel)
 
     def extrair_dados_label(self):
-        oscilacao_label = self.get_html_selector().xpath(
-            "//table[3]//td[@class='nivel1']//span/text()").extract( )[0]
-        lista_oscilacoes_label = self.get_html_selector().xpath(
-            "//table[3]//td[@class='label w1']//span/text()").extract( )
+        oscilacao_label = self._get_html_selector().xpath(
+            "//table[3]//td[@class='nivel1']//span/text()").extract()[0]
+        lista_oscilacoes_label = self._get_html_selector().xpath(
+            "//table[3]//td[@class='label w1']//span/text()").extract()
         oscilacoes_label = list(map(lambda label: oscilacao_label + "_" + label, lista_oscilacoes_label))
         return oscilacoes_label
 
     def extrair_dados_valores(self):
-        oscilacoes_dados = self.get_html_selector().xpath(
-            "//table[3]//span[@class='oscil']/font/text()").extract( )
+        oscilacoes_dados = self._get_html_selector().xpath(
+            "//table[3]//span[@class='oscil']/font/text()").extract()
         return oscilacoes_dados

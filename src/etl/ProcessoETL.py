@@ -11,6 +11,7 @@ class ProcessoETL:
 
 
     def _extrair_dados_empresa(self):
+
         dados_label = self.__web_scraping_object.extrair_dados_label()
         dados_valores = self.__web_scraping_object.extrair_dados_valores()
 

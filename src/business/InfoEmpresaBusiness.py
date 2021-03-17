@@ -12,12 +12,13 @@ class InfoEmpresaBusiness:
         id_empresa_inserida = info_empresa_etl.iniciar_info_empresa_etl()
         return id_empresa_inserida
 
-    def info_dados_empresa_nao_exitem(self):
-        dados_empresa = InfoEmpresaDAO().buscar_dados_empresa_por_papel(self.__papel)
+    @staticmethod
+    def verificar_dados_empresa_exitem(papel):
+        dados_empresa = InfoEmpresaDAO().buscar_dados_empresa_por_papel(papel)
         if dados_empresa is None:
-            return True
+            return None
         else:
-            return False
+            return dados_empresa['_id']
 
 
 

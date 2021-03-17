@@ -7,27 +7,28 @@ from src.web_scraping.fundamentus_web.DataScraping import DataScraping
 
 class CotacaoEmpresaBusiness:
 
-    def __init__(self, papel, id_empresa_inserida):
+    def __init__(self, papel):
         self.__papel = papel
         self.__id_inserido_cotacao = None
-        self.__id_empresa_inserida = id_empresa_inserida
 
-
-    def iniciar_web_scraping(self):
-        self.__cotacao_web_scraping()
+    def iniciar_web_scraping(self, id_dados_empresa):
+        self.__cotacao_web_scraping(id_dados_empresa)
         self.__oscilacoes_web_scraping()
         self.__indicadores_web_scraping()
 
-    def ultima_cotacao_nao_existe(self):
-        data_ultima_cotacao = DataScraping(self.__papel).extrair_data_ult_cotacao()
-        ultima_cotacao = CotacaoEmpresaDAO().buscar_cotacao_empresa_por_papel_data(self.__papel, data_ultima_cotacao)
+    @staticmethod
+    def verificar_ultima_cotacao_existe(id_dados_empresa, papel):
+        data_ultima_cotacao = DataScraping(papel).extrair_data_ult_cotacao()
+        ultima_cotacao = CotacaoEmpresaDAO().buscar_cotacao_empresa_por_id_empresa_data(id_dados_empresa,
+                                                                                        data_ultima_cotacao)
+        print(f"Data última cotacação: {data_ultima_cotacao}")
         if ultima_cotacao is None:
             return True
         else:
             return False
 
-    def __cotacao_web_scraping(self):
-        cotacao_etl = CotacaoEmpresaETL(self.__papel, self.__id_empresa_inserida)
+    def __cotacao_web_scraping(self, id_empresa_inserida):
+        cotacao_etl = CotacaoEmpresaETL(self.__papel, id_empresa_inserida)
         self.__id_inserido_cotacao = cotacao_etl.iniciar_cotacao_etl()
 
     def __oscilacoes_web_scraping(self):

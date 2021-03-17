@@ -15,6 +15,7 @@ class CotacaoEmpresaDAO(AbstractMongoDAO):
 
 
     def inserir_dados(self, cotacao_empresa):
+        print('** Incluindo dados da cotação...')
         id_inserido_cotacao = self.__colecao_mongo.insert_one(cotacao_empresa).inserted_id
         return id_inserido_cotacao
 
@@ -34,6 +35,11 @@ class CotacaoEmpresaDAO(AbstractMongoDAO):
         cotacao_por_papel_data = self.__colecao_mongo.find_one({"Papel": papel,
                                                                 "Data_ult_cot": data_cotacao})
         return cotacao_por_papel_data
+
+    def buscar_cotacao_empresa_por_id_empresa_data(self, id_empresa, data_cotacao):
+        cotacao_por_id_data = self.__colecao_mongo.find_one({"Empresa": id_empresa,
+                                                             "Data_ult_cot": data_cotacao})
+        return cotacao_por_id_data
 
     def get_erro(self):
         return self.__erro

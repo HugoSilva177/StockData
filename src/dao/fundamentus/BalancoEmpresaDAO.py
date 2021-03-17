@@ -14,6 +14,7 @@ class BalancoEmpresaDAO(AbstractMongoDAO):
             self.__erro = "Falha em estabelecer conexao com a coleção 'balanco_empresa' no MongoDB"
 
     def inserir_dados(self, balanco_empresa):
+        print('** Incluindo dados do balanço...')
         id_balanco_inserido = self.__colecao_mongo.insert_one(balanco_empresa).inserted_id
         return id_balanco_inserido
 
@@ -22,8 +23,13 @@ class BalancoEmpresaDAO(AbstractMongoDAO):
 
     def buscar_balanco_empresa_por_papel_data(self, papel, data_balanco):
         balanco_papel_data = self.__colecao_mongo.find_one({"Papel": papel,
-                                                            "Data_ult_cot": data_balanco})
+                                                            "Ult_balanco_processado": data_balanco})
         return balanco_papel_data
+
+    def buscar_balanco_empresa_por_id_empresa_data(self, id_empresa, data_balanco):
+        balanco_id_empresa_data = self.__colecao_mongo.find_one({"Empresa": id_empresa,
+                                                                 "Ult_balanco_processado": data_balanco})
+        return balanco_id_empresa_data
 
     def buscar_lista_balancos_empresa_por_papel(self, papel):
         lista_balancos = self.__colecao_mongo.find({"Papel": papel})

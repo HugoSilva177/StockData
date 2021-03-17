@@ -6,15 +6,13 @@ from src.web_scraping.fundamentus_web.BalancoEmpresaScraping import BalancoEmpre
 
 class BalancoEmpresaETL(ProcessoETL):
 
-    def __init__(self, papel):
+    def __init__(self, papel, id_dados_empresa):
         super().__init__(BalancoEmpresaScraping(papel), BalancoEmpresaDAO())
-        self.__papel = papel
+        self.__id_dados_empresa = id_dados_empresa
 
     def iniciar_balanco_empresa_etl(self):
-        info_empresa_dao = InfoEmpresaDAO()
         balanco_empresa_label, balanco_empresa_dados = self._extrair_dados_empresa()
         balanco_empresa = self._transformar_dados_empresa(balanco_empresa_label,
                                                           balanco_empresa_dados)
-        id_empresa = info_empresa_dao.buscar_dados_empresa_por_papel(self.__papel)
-        balanco_empresa['Empresa'] = id_empresa['Papel']
+        balanco_empresa['Empresa'] = self.__id_dados_empresa
         self._gravar_dados_empresa_db(balanco_empresa)
