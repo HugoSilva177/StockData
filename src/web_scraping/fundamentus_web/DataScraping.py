@@ -2,7 +2,7 @@ from src.web_scraping.fundamentus_web.WebScraping import WebScraping
 from src.etl.DadosTransformacao import DadosTransformacao
 
 
-class ExtractData(WebScraping):
+class DataScraping(WebScraping):
 
     def __init__(self, papel):
         super.__init__(papel)

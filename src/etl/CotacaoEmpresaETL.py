@@ -1,4 +1,3 @@
-from src.etl.DadosTransformacao import DadosTransformacao
 from src.etl.ProcessoETL import ProcessoETL
 from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 from src.web_scraping.fundamentus_web.CotacaoEmpresaScraping import CotacaoEmpresaScraping
@@ -15,8 +14,8 @@ class CotacaoEmpresaETL(ProcessoETL):
         cotacao_empresa = self._transformar_dados_empresa(cotacao_empresa_label,
                                                           cotacao_empresa_dados)
         cotacao_empresa['Empresa'] = self.__id_empresa_inserida
-        id_inserido_cotacao = self._gravar_dados_empresa_db(cotacao_empresa)
-        return id_inserido_cotacao
+        id_cotacao_inserido = self._gravar_dados_empresa_db(cotacao_empresa)
+        return id_cotacao_inserido
 
 
 """

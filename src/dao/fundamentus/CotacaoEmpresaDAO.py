@@ -31,9 +31,9 @@ class CotacaoEmpresaDAO(AbstractMongoDAO):
         return lista_cotacoes
 
     def buscar_cotacao_empresa_por_papel_data(self, papel, data_cotacao):
-        cotacao_por_papel = self.__colecao_mongo.find_one({"Papel": papel,
-                                                           "Data_ult_cot": data_cotacao})
-        return cotacao_por_papel
+        cotacao_por_papel_data = self.__colecao_mongo.find_one({"Papel": papel,
+                                                                "Data_ult_cot": data_cotacao})
+        return cotacao_por_papel_data
 
     def get_erro(self):
         return self.__erro
