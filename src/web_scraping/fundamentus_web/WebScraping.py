@@ -1,7 +1,7 @@
 from scrapy import Selector
 from abc import ABCMeta, abstractmethod
 from urllib.request import Request, urlopen
-
+from src.exceptions.PapelInvalidoError import PapelInvalidoError
 
 class WebScraping(metaclass=ABCMeta):
 
@@ -24,9 +24,9 @@ class WebScraping(metaclass=ABCMeta):
         html_dados = response.decode('latin-1')
 
         html_selector = Selector(text=html_dados)
-        conteudo_url_nao_existe = len(html_selector.xpath("//table"))
+        conteudo_url_nao_existe = len(html_selector.xpath("//table[@class='w728']"))
         if conteudo_url_nao_existe == 0:
-            raise Exception('URL não é válida')
+            raise PapelInvalidoError('Nome do papel não é válido!')
         return html_selector
 
     def get_erro(self):

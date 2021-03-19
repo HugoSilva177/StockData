@@ -1,4 +1,5 @@
 from src.business.InfoEmpresaBusiness import InfoEmpresaBusiness
+from src.exceptions.PapelInvalidoError import PapelInvalidoError
 from src.business.CotacaoEmpresaBusiness import CotacaoEmpresaBusiness
 from src.business.BalancoEmpresaBusiness import BalancoEmpresaBusiness
 
@@ -15,8 +16,9 @@ class EmpresaBusiness:
             try:
                 self.__validacao_dados_empresa()
                 nome_papel_invalido = False
-            except Exception:
-                print('Nome do papel inválido. Tente novamente...')
+            except PapelInvalidoError as err:
+                print(f'Erro: {err.get_mensagem_erro()}')
+                print('Tente novamente...')
 
     def __validacao_dados_empresa(self):
         id_dados_empresa = InfoEmpresaBusiness.verificar_dados_empresa_exitem(self.__papel)

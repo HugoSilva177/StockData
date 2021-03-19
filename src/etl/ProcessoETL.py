@@ -3,18 +3,15 @@ from src.etl.DadosTransformacao import DadosTransformacao
 from src.web_scraping.fundamentus_web.WebScraping import WebScraping
 
 
-class ProcessoETL:
+class ProcessoETL():
 
     def __init__(self, web_scraping_object, dao_object):
         self.__web_scraping_object = web_scraping_object
         self.__dao_object = dao_object
 
-
-    def _extrair_dados_empresa(self):
-
-        dados_label = self.__web_scraping_object.extrair_dados_label()
-        dados_valores = self.__web_scraping_object.extrair_dados_valores()
-
+    def _extrair_dados_empresa(self, dados_label, dados_valores):
+        dados_label += self.__web_scraping_object.extrair_dados_label()
+        dados_valores += self.__web_scraping_object.extrair_dados_valores()
         return dados_label, dados_valores
 
     def _transformar_dados_empresa(self, dados_label, dados_valores):
@@ -27,5 +24,9 @@ class ProcessoETL:
     def _gravar_dados_empresa_db(self, dados_empresa):
         id_dado_inserido = self.__dao_object.inserir_dados(dados_empresa)
         return id_dado_inserido
+
+
+
+
 
 

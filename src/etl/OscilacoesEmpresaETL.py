@@ -13,7 +13,10 @@ class OscilacoesEmpresaETL(ProcessoETL):
 
 
     def iniciar_oscilacoes_etl(self):
-        oscilacoes_empresa_label, oscilacoes_empresa_dados = self._extrair_dados_empresa()
+        oscilacoes_empresa_label, oscilacoes_empresa_dados = self._extrair_dados_empresa(['Id_Cotacao', 'Papel'],
+                                                                                         [self.__id_inserido_cotacao,
+                                                                                          self.__papel])
         oscilacoes_empresa = self._transformar_dados_empresa(oscilacoes_empresa_label, oscilacoes_empresa_dados)
-        oscilacoes_empresa['Cotacao'] = self.__id_inserido_cotacao
         self._gravar_dados_empresa_db(oscilacoes_empresa)
+
+

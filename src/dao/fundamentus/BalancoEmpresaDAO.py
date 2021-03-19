@@ -27,7 +27,7 @@ class BalancoEmpresaDAO(AbstractMongoDAO):
         return balanco_papel_data
 
     def buscar_balanco_empresa_por_id_empresa_data(self, id_empresa, data_balanco):
-        balanco_id_empresa_data = self.__colecao_mongo.find_one({"Empresa": id_empresa,
+        balanco_id_empresa_data = self.__colecao_mongo.find_one({"Id_Empresa": id_empresa,
                                                                  "Ult_balanco_processado": data_balanco})
         return balanco_id_empresa_data
 
