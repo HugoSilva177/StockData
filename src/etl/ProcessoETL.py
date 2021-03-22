@@ -3,7 +3,7 @@ from src.etl.DadosTransformacao import DadosTransformacao
 from src.web_scraping.fundamentus_web.WebScraping import WebScraping
 
 
-class ProcessoETL():
+class ProcessoETL:
 
     def __init__(self, web_scraping_object, dao_object):
         self.__web_scraping_object = web_scraping_object

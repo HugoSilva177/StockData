@@ -10,7 +10,7 @@ class DAConexaoFactory:
         self.__hadoop_hdfs = 'hadoop'
         self.__mysql = 'mysql'
 
-    def get_conexao(self, banco_tipo, banco_nome):
+    def _get_conexao(self, banco_tipo, banco_nome):
         conexao_db = None
         self.__factory = banco_tipo
         if(banco_tipo == self.__mongo_db):
