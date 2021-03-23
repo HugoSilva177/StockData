@@ -7,7 +7,6 @@ class DAConexaoFactory:
         self.__erroConexao = None
         self.__factory = None
         self.__mongo_db = 'mongodb'
-        self.__hadoop_hdfs = 'hadoop'
         self.__mysql = 'mysql'
 
     def _get_conexao(self, banco_tipo, banco_nome):
@@ -20,7 +19,7 @@ class DAConexaoFactory:
                 conexao_db = cliente_db[banco_nome]
             except Exception:
                 self.__erroConexao = 'Erro ao conectar no MongoDB (fundamentus)'
-        if(banco_tipo == self.__hadoop_hdfs):
+        if(banco_tipo == self.__mysql):
             pass
         return conexao_db
 

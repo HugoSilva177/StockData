@@ -1,22 +1,36 @@
 import pytest
+from bson.objectid import ObjectId
 from src.etl.ProcessoETL import ProcessoETL
-from src.web_scraping.fundamentus_web.InfoEmpresaScraping import InfoEmpresaScraping
+from src.dao.fundamentus.IndicadoresDAO import IndicadoresDAO
 from src.dao.fundamentus.InfoEmpresaDAO import InfoEmpresaDAO
+from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
+from src.dao.fundamentus.BalancoEmpresaDAO import BalancoEmpresaDAO
+from src.dao.fundamentus.OscilacoesEmpresaDAO import OscilacoesEmpresaDAO
+from src.web_scraping.fundamentus_web.InfoEmpresaScraping import InfoEmpresaScraping
+from src.web_scraping.fundamentus_web.BalancoEmpresaScraping import BalancoEmpresaScraping
+from src.web_scraping.fundamentus_web.CotacaoEmpresaScraping import CotacaoEmpresaScraping
+from src.web_scraping.fundamentus_web.OscilacoesEmpresaScraping import OscilacoesEmpresaScraping
+from src.web_scraping.fundamentus_web.IndicadoresEmpresaScraping import IndicadoresEmpresaScraping
 
 
 class TestProcessoETL:
 
+    @pytest.fixture(params=[(InfoEmpresaScraping("PETR4"), InfoEmpresaDAO()),
+                            (CotacaoEmpresaScraping("PETR4"), CotacaoEmpresaDAO()),
+                            (OscilacoesEmpresaScraping("PETR4"), OscilacoesEmpresaDAO(ObjectId())),
+                            (IndicadoresEmpresaScraping("PETR4"), IndicadoresDAO(ObjectId())),
+                            (BalancoEmpresaScraping("PETR4"), BalancoEmpresaDAO())])
+    def processo_etl_scraping(self, request):
+        return request.param
+
+
     @pytest.fixture
-    def processo_etl(self):
-        return ProcessoETL(InfoEmpresaScraping('PETR4'), InfoEmpresaDAO())
+    def processo_etl(self, processo_etl_scraping):
+        return ProcessoETL(processo_etl_scraping[0], processo_etl_scraping[1])
 
-
-    def test_deve_extrair_e_retornar_lista_labels_do_tipo_list(self, processo_etl):
-        lista_label, _ = processo_etl._extrair_dados_empresa([], [])
+    def test_deve_extrair_e_retornar_lista_labels_e_lista_valores_do_tipo_list(self, processo_etl):
+        lista_label, lista_valores = processo_etl._extrair_dados_empresa([], [])
         assert str(type(lista_label)) == "<class 'list'>"
-
-    def test_deve_extrair_e_retornar_lista_valores_do_tipo_list(self, processo_etl):
-        _, lista_valores = processo_etl._extrair_dados_empresa([], [])
         assert str(type(lista_valores)) == "<class 'list'>"
 
     def test_deve_extrair_e_retornar_duas_listas(self, processo_etl):

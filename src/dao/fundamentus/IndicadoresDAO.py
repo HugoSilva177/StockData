@@ -5,14 +5,14 @@ from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 
 class IndicadoresDAO(AbstractMongoDAO):
 
-        def __init__(self, id_inserido_cotacao):
+        def __init__(self, id_inserido_cotacao, banco_dados="fundamentus", nome_colecao="indicadores_empresa"):
             super().__init__()
             self.__erro = None
             self.__colecao_mongo = None
             self.__cotacao_dao = CotacaoEmpresaDAO()
             self.__id_inserido_cotacao = id_inserido_cotacao
             try:
-                self.__colecao_mongo = DAConexaoMongo('fundamentus', 'indicadores_empresa').get_colecao_mongo( )
+                self.__colecao_mongo = DAConexaoMongo(banco_dados, nome_colecao).get_colecao_mongo( )
             except Exception:
                 self.__erro = "Falha em estabelecer conexao com a coleção 'indicadores_empresa' no MongoDB"
 
