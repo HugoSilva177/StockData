@@ -4,7 +4,7 @@ O projeto StockData tem como objetivo fazer a coleta de informações de uma emp
 Após a coleta o intuito é que os dados sejam pré formatados, organizados, fornecidos e utilizados para análise e aprendizagem de máquina.
 
 
-<b>Através de um processo de ETL (Extract, Transform and Load):</b>
+<b>Processo de ETL (Extract, Transform and Load):</b>
   *  Extract: tendo diversas fontes como banco de dados, planilhas e principalmente Web Scraping.
       * Web Scraping será feito em sites especificos: em busca de informações da empresa como dados financeiros, balanços, DRE, cotações, oscilações e notícias sobre a empresa.
   * Transform: todas informações serão pré processadas e formatadas antes do armazenamento.
