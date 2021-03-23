@@ -34,9 +34,3 @@ class BalancoEmpresaDAO(AbstractMongoDAO):
     def buscar_lista_balancos_empresa_por_papel(self, papel):
         lista_balancos = self.__colecao_mongo.find({"Papel": papel})
         return lista_balancos
-
-    def atualizar_cotacoes_no_balanco_por_id(self, id_inserido_balanco, id_inserido_cotacao):
-        pass
-
-    def atualizar_cotacoes_no_balanco_por_papel_data(self, papel, data_ult_balanco, id_inserido_cotacao):
-        pass

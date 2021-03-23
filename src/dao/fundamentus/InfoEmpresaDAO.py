@@ -18,10 +18,16 @@ class InfoEmpresaDAO(AbstractMongoDAO):
         print('Dados da empresa não existe!')
         print('* Incluindo dados da empresa...')
         id_empresa_inserida = self.__colecao_mongo.insert_one(info_empresa).inserted_id
+        colecao = self.buscar_dados_empresa_por_papel("PETR4")
+        print(type(colecao))
         return id_empresa_inserida
 
     def buscar_dados_empresa_por_papel(self, papel):
         dados_empresa = self.__colecao_mongo.find_one({"Papel": papel})
+        return dados_empresa
+
+    def buscar_dados_empresa_por_id(self, id_empresa):
+        dados_empresa = self.__colecao_mongo.find_one({"_id": id_empresa})
         return dados_empresa
 
     def get_erro(self):

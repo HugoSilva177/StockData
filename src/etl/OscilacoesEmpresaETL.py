@@ -1,4 +1,5 @@
 from src.etl.DadosTransformacao import DadosTransformacao
+from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 from src.dao.fundamentus.OscilacoesEmpresaDAO import OscilacoesEmpresaDAO
 from src.web_scraping.fundamentus_web.OscilacoesEmpresaScraping import OscilacoesEmpresaScraping
 from src.etl.ProcessoETL import ProcessoETL
@@ -7,7 +8,7 @@ from src.etl.ProcessoETL import ProcessoETL
 class OscilacoesEmpresaETL(ProcessoETL):
 
     def __init__(self, papel, id_inserido_cotacao):
-        super().__init__(OscilacoesEmpresaScraping(papel), OscilacoesEmpresaDAO(id_inserido_cotacao))
+        super().__init__(OscilacoesEmpresaScraping(papel), OscilacoesEmpresaDAO())
         self.__papel = papel
         self.__id_inserido_cotacao = id_inserido_cotacao
 
@@ -17,6 +18,11 @@ class OscilacoesEmpresaETL(ProcessoETL):
                                                                                          [self.__id_inserido_cotacao,
                                                                                           self.__papel])
         oscilacoes_empresa = self._transformar_dados_empresa(oscilacoes_empresa_label, oscilacoes_empresa_dados)
-        self._gravar_dados_empresa_db(oscilacoes_empresa)
+        id_oscilacoes = self._gravar_dados_empresa_db(oscilacoes_empresa)
+        self.__incluir_id_oscilacoes_na_colecao_cotacao(id_oscilacoes)
+
+    def __incluir_id_oscilacoes_na_colecao_cotacao(self, id_oscilacoes):
+        CotacaoEmpresaDAO().inserir_oscilacoes_na_cotacao(self.__id_inserido_cotacao,
+                                                          id_oscilacoes)
 
 
