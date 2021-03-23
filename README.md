@@ -19,4 +19,5 @@ Após a coleta o intuito é que os dados sejam pré formatados, organizados, for
   * Ansible: provisionamento da VMs criadas pelo Vagrant
   * Airflow: gerenciamento de fluxo de execução do processo de ETL
   * Docker: execução de seviços como MongoDB e Airflow
+  * Git: versionamento do projeto
   
