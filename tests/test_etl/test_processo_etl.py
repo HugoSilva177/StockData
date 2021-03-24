@@ -23,7 +23,6 @@ class TestProcessoETL:
     def processo_etl_scraping(self, request):
         return request.param
 
-
     @pytest.fixture
     def processo_etl(self, processo_etl_scraping):
         return ProcessoETL(processo_etl_scraping[0], processo_etl_scraping[1])

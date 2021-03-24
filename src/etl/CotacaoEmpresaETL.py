@@ -14,8 +14,8 @@ class CotacaoEmpresaETL(ProcessoETL):
         cotacao_empresa_label, cotacao_empresa_dados = self._extrair_dados_empresa(['Id_Empresa', 'Papel'],
                                                                                    [self.__id_empresa_inserida,
                                                                                     self.__papel])
-        cotacao_empresa = self._transformar_dados_empresa(cotacao_empresa_label, cotacao_empresa_dados)
-        id_cotacao_inserido = self._gravar_dados_empresa_db(cotacao_empresa)
+        dados_empresa_dicionario, dados_empresa_spark_df = self._transformar_dados_empresa(cotacao_empresa_label, cotacao_empresa_dados)
+        id_cotacao_inserido = self._gravar_dados_empresa(dados_empresa_dicionario, dados_empresa_spark_df)
         return id_cotacao_inserido
 
 

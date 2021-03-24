@@ -16,8 +16,8 @@ class IndicadoresEmpresaETL(ProcessoETL):
         indicadores_empresa_label, indicadores_empresa_dados = self._extrair_dados_empresa(['Id_Cotacao', 'Papel'],
                                                                                            [self.__id_inserido_cotacao,
                                                                                             self.__papel])
-        indicadores_empresa = self._transformar_dados_empresa(indicadores_empresa_label, indicadores_empresa_dados)
-        indicadores_empresa = self._gravar_dados_empresa_db(indicadores_empresa)
+        dados_empresa_dicionario, dados_empresa_spark_df = self._transformar_dados_empresa(indicadores_empresa_label, indicadores_empresa_dados)
+        indicadores_empresa = self._gravar_dados_empresa(dados_empresa_dicionario, dados_empresa_spark_df)
         self.__incluir_id_indicadores_na_colecao_cotacao(indicadores_empresa)
 
     def __incluir_id_indicadores_na_colecao_cotacao(self, id_indicadores):

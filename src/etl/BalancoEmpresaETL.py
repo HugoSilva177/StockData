@@ -15,6 +15,6 @@ class BalancoEmpresaETL(ProcessoETL):
         balanco_empresa_label, balanco_empresa_dados = self._extrair_dados_empresa(['Id_Empresa', 'Papel'],
                                                                                    [self.__id_dados_empresa,
                                                                                     self.__papel])
-        balanco_empresa = self._transformar_dados_empresa(balanco_empresa_label,
+        dados_empresa_dicionario, dados_empresa_spark_df = self._transformar_dados_empresa(balanco_empresa_label,
                                                           balanco_empresa_dados)
-        self._gravar_dados_empresa_db(balanco_empresa)
+        self._gravar_dados_empresa(dados_empresa_dicionario, dados_empresa_spark_df)
