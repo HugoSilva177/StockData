@@ -1,13 +1,13 @@
 from src.etl.ProcessoETL import ProcessoETL
-from src.dao.fundamentus.InfoEmpresaDAO import InfoEmpresaDAO
-from src.dao.fundamentus.BalancoEmpresaDAO import BalancoEmpresaDAO
+from src.dao.mongodb.BalancoEmpresaDAO import BalancoEmpresaDAO
+from src.dao.hadoop_hdfs.BalancoEmpresaHDFS import BalancoEmpresaHDFS
 from src.web_scraping.fundamentus_web.BalancoEmpresaScraping import BalancoEmpresaScraping
 
 
 class BalancoEmpresaETL(ProcessoETL):
 
     def __init__(self, papel, id_dados_empresa):
-        super().__init__(BalancoEmpresaScraping(papel), BalancoEmpresaDAO())
+        super().__init__(BalancoEmpresaScraping(papel), BalancoEmpresaDAO(), BalancoEmpresaHDFS())
         self.__id_dados_empresa = id_dados_empresa
         self.__papel = papel
 
@@ -16,5 +16,5 @@ class BalancoEmpresaETL(ProcessoETL):
                                                                                    [self.__id_dados_empresa,
                                                                                     self.__papel])
         dados_empresa_dicionario, dados_empresa_spark_df = self._transformar_dados_empresa(balanco_empresa_label,
-                                                          balanco_empresa_dados)
+                                                                                           balanco_empresa_dados)
         self._gravar_dados_empresa(dados_empresa_dicionario, dados_empresa_spark_df)

@@ -1,10 +1,10 @@
 from src.connect_db.DAConexaoMongo import DAConexaoMongo
-from src.dao.fundamentus.AbstractMongoDAO import AbstractMongoDAO
+from src.dao.mongodb.AbstractMongoDAO import AbstractMongoDAO
 
 
 class IndicadoresDAO(AbstractMongoDAO):
 
-        def __init__(self, banco_dados="fundamentus", nome_colecao="indicadores_empresa"):
+        def __init__(self, banco_dados="mongodb", nome_colecao="indicadores_empresa"):
             super().__init__()
             self.__erro = None
             self.__colecao_mongo = None

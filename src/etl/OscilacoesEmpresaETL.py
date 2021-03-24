@@ -1,14 +1,14 @@
-from src.etl.DadosTransformacao import DadosTransformacao
-from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
-from src.dao.fundamentus.OscilacoesEmpresaDAO import OscilacoesEmpresaDAO
-from src.web_scraping.fundamentus_web.OscilacoesEmpresaScraping import OscilacoesEmpresaScraping
 from src.etl.ProcessoETL import ProcessoETL
+from src.dao.mongodb.CotacaoEmpresaDAO import CotacaoEmpresaDAO
+from src.dao.mongodb.OscilacoesEmpresaDAO import OscilacoesEmpresaDAO
+from src.dao.hadoop_hdfs.OscilacoesEmpresaHDFS import OscilacoesEmpresaHDFS
+from src.web_scraping.fundamentus_web.OscilacoesEmpresaScraping import OscilacoesEmpresaScraping
 
 
 class OscilacoesEmpresaETL(ProcessoETL):
 
     def __init__(self, papel, id_inserido_cotacao):
-        super().__init__(OscilacoesEmpresaScraping(papel), OscilacoesEmpresaDAO())
+        super().__init__(OscilacoesEmpresaScraping(papel), OscilacoesEmpresaDAO(), OscilacoesEmpresaHDFS())
         self.__papel = papel
         self.__id_inserido_cotacao = id_inserido_cotacao
 

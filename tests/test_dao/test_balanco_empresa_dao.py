@@ -1,6 +1,6 @@
 import pytest
-from src.dao.fundamentus.BalancoEmpresaDAO import BalancoEmpresaDAO
-from src.dao.fundamentus.InfoEmpresaDAO import InfoEmpresaDAO
+from src.dao.mongodb.BalancoEmpresaDAO import BalancoEmpresaDAO
+from src.dao.mongodb.InfoEmpresaDAO import InfoEmpresaDAO
 
 
 class TestBalancoEmpresaDAO:

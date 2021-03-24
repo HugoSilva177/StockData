@@ -6,7 +6,7 @@
   become_user: hadoopuser
 
 - name: "Formatar o HDFS do Hadoop"
-  command: hdfs namenode -format
+  command: hadoop_hdfs namenode -format
   when: hdfs_formatted.stat.exists == False
   become: yes
   become_user: hadoopuser

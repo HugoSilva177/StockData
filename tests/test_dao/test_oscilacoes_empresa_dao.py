@@ -1,6 +1,6 @@
 import pytest
-from src.dao.fundamentus.OscilacoesEmpresaDAO import OscilacoesEmpresaDAO
-from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
+from src.dao.mongodb.OscilacoesEmpresaDAO import OscilacoesEmpresaDAO
+from src.dao.mongodb.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 
 
 class TestOscilacoesEmpresaDAO:

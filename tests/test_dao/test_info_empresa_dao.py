@@ -1,5 +1,5 @@
 import pytest
-from src.dao.fundamentus.InfoEmpresaDAO import InfoEmpresaDAO
+from src.dao.mongodb.InfoEmpresaDAO import InfoEmpresaDAO
 
 
 class TestInfoEmpresaDAO:

@@ -1,5 +1,5 @@
 from src.etl.InfoEmpresaETL import InfoEmpresaETL
-from src.dao.fundamentus.InfoEmpresaDAO import InfoEmpresaDAO
+from src.dao.mongodb.InfoEmpresaDAO import InfoEmpresaDAO
 
 
 class InfoEmpresaBusiness:

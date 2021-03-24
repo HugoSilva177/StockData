@@ -1,7 +1,7 @@
 from src.etl.CotacaoEmpresaETL import CotacaoEmpresaETL
 from src.etl.OscilacoesEmpresaETL import OscilacoesEmpresaETL
 from src.etl.IndicadoresEmpresaETL import IndicadoresEmpresaETL
-from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
+from src.dao.mongodb.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 from src.web_scraping.fundamentus_web.DataScraping import DataScraping
 
 

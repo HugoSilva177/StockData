@@ -1,13 +1,14 @@
 from src.etl.ProcessoETL import ProcessoETL
+from src.dao.mongodb.IndicadoresDAO import IndicadoresDAO
+from src.dao.mongodb.CotacaoEmpresaDAO import CotacaoEmpresaDAO
+from src.dao.hadoop_hdfs.IndicadoresEmpresaHDFS import IndicadoresEmpresaHDFS
 from src.web_scraping.fundamentus_web.IndicadoresEmpresaScraping import IndicadoresEmpresaScraping
-from src.dao.fundamentus.IndicadoresDAO import IndicadoresDAO
-from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 
 
 class IndicadoresEmpresaETL(ProcessoETL):
 
     def __init__(self, papel, id_inserido_cotacao):
-        super().__init__(IndicadoresEmpresaScraping(papel), IndicadoresDAO())
+        super().__init__(IndicadoresEmpresaScraping(papel), IndicadoresDAO(), IndicadoresEmpresaHDFS())
         self.__papel = papel
         self.__id_inserido_cotacao = id_inserido_cotacao
 

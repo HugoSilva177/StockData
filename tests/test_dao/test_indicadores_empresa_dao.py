@@ -1,6 +1,6 @@
 import pytest
-from src.dao.fundamentus.IndicadoresDAO import IndicadoresDAO
-from src.dao.fundamentus.CotacaoEmpresaDAO import CotacaoEmpresaDAO
+from src.dao.mongodb.IndicadoresDAO import IndicadoresDAO
+from src.dao.mongodb.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 
 
 class TestIndicadoresEmpresaDAO:

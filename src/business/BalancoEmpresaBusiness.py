@@ -1,5 +1,5 @@
 from src.etl.BalancoEmpresaETL import BalancoEmpresaETL
-from src.dao.fundamentus.BalancoEmpresaDAO import BalancoEmpresaDAO
+from src.dao.mongodb.BalancoEmpresaDAO import BalancoEmpresaDAO
 from src.web_scraping.fundamentus_web.DataScraping import DataScraping
 
 
