@@ -12,12 +12,13 @@ Após a coleta o intuito é que os dados sejam pré formatados, organizados, for
 
 
 <b>Tecnologias utilizadas:</b>
-  * Python: todo o processo de ETL e Web Scraping
+  * Python: processo de ETL, Web Scraping, interação com base de dados e hadoop
   * MongoDB: armazenamento dos dados
   * Hadoop HDFS: armazenamento dos dados
   * Vagrant: criação de máquinas virtuais para o cluster Hadoop
   * Ansible: provisionamento da VMs criadas pelo Vagrant
   * Airflow: gerenciamento de fluxo de execução do processo de ETL
-  * Docker: execução de seviços como MongoDB e Airflow
+  * Kafka: mensageria entre os microsserviços
+  * Docker: arquitetura de microsserviços do projeto
   * Git: versionamento do projeto
   
