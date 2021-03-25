@@ -1,6 +1,4 @@
-from fundamentus_etl.src.etl import DadosTransformacao
-
-
+from fundamentus_etl.src.etl.DadosTransformacao import DadosTransformacao
 
 class ProcessoETL:
 

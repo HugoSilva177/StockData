@@ -2,7 +2,7 @@ from fundamentus_etl.src.etl import ProcessoETL
 from fundamentus_etl.src.dao.mongodb.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 from fundamentus_etl.src.dao.mongodb.OscilacoesEmpresaDAO import OscilacoesEmpresaDAO
 from fundamentus_etl.src.dao.hadoop_hdfs.OscilacoesEmpresaHDFS import OscilacoesEmpresaHDFS
-from fundamentus_etl.src.web_scraping.fundamentus_web import OscilacoesEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.OscilacoesEmpresaScraping import OscilacoesEmpresaScraping
 
 
 class OscilacoesEmpresaETL(ProcessoETL):

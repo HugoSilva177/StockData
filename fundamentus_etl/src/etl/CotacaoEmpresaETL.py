@@ -1,7 +1,7 @@
 from fundamentus_etl.src.etl import ProcessoETL
 from fundamentus_etl.src.dao.mongodb.CotacaoEmpresaDAO import CotacaoEmpresaDAO
 from fundamentus_etl.src.dao.hadoop_hdfs.CotacaoEmpresaHDFS import CotacaoEmpresaHDFS
-from fundamentus_etl.src.web_scraping.fundamentus_web import CotacaoEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.CotacaoEmpresaScraping import CotacaoEmpresaScraping
 
 
 class CotacaoEmpresaETL(ProcessoETL):

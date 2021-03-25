@@ -1,9 +1,9 @@
 import pytest
 from fundamentus_etl.src.web_scraping.fundamentus_web.InfoEmpresaScraping import InfoEmpresaScraping
-from fundamentus_etl.src.web_scraping.fundamentus_web import CotacaoEmpresaScraping
-from fundamentus_etl.src.web_scraping.fundamentus_web import OscilacoesEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.CotacaoEmpresaScraping import CotacaoEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.OscilacoesEmpresaScraping import OscilacoesEmpresaScraping
 from fundamentus_etl.src.web_scraping.fundamentus_web.IndicadoresEmpresaScraping import IndicadoresEmpresaScraping
-from fundamentus_etl.src.web_scraping.fundamentus_web import BalancoEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.BalancoEmpresaScraping import BalancoEmpresaScraping
 
 
 class TestInfoEmpresaScraping:

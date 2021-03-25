@@ -1,7 +1,7 @@
 from fundamentus_etl.src.etl import ProcessoETL
 from fundamentus_etl.src.dao.mongodb.BalancoEmpresaDAO import BalancoEmpresaDAO
 from fundamentus_etl.src.dao.hadoop_hdfs.BalancoEmpresaHDFS import BalancoEmpresaHDFS
-from fundamentus_etl.src.web_scraping.fundamentus_web import BalancoEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.BalancoEmpresaScraping import BalancoEmpresaScraping
 
 
 class BalancoEmpresaETL(ProcessoETL):

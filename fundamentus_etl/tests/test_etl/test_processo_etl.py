@@ -1,6 +1,6 @@
 import pytest
 from bson.objectid import ObjectId
-from fundamentus_etl.src.etl import ProcessoETL
+from fundamentus_etl.src.etl.ProcessoETL import ProcessoETL
 from fundamentus_etl.src.dao.mongodb.IndicadoresDAO import IndicadoresDAO
 from fundamentus_etl.src.dao.mongodb.InfoEmpresaDAO import InfoEmpresaDAO
 from fundamentus_etl.src.dao.mongodb.CotacaoEmpresaDAO import CotacaoEmpresaDAO
@@ -12,9 +12,9 @@ from fundamentus_etl.src.dao.hadoop_hdfs.BalancoEmpresaHDFS import BalancoEmpres
 from fundamentus_etl.src.dao.hadoop_hdfs.OscilacoesEmpresaHDFS import OscilacoesEmpresaHDFS
 from fundamentus_etl.src.dao.hadoop_hdfs.IndicadoresEmpresaHDFS import IndicadoresEmpresaHDFS
 from fundamentus_etl.src.web_scraping.fundamentus_web.InfoEmpresaScraping import InfoEmpresaScraping
-from fundamentus_etl.src.web_scraping.fundamentus_web import BalancoEmpresaScraping
-from fundamentus_etl.src.web_scraping.fundamentus_web import CotacaoEmpresaScraping
-from fundamentus_etl.src.web_scraping.fundamentus_web import OscilacoesEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.BalancoEmpresaScraping import BalancoEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.CotacaoEmpresaScraping import CotacaoEmpresaScraping
+from fundamentus_etl.src.web_scraping.fundamentus_web.OscilacoesEmpresaScraping import OscilacoesEmpresaScraping
 from fundamentus_etl.src.web_scraping.fundamentus_web.IndicadoresEmpresaScraping import IndicadoresEmpresaScraping
 
 
@@ -47,7 +47,8 @@ class TestProcessoETL:
         assert len(lista_labels) == len(lista_valores)
 
     def test_transformar_deve_receber_duas_listas_e_retornar_um_dicionario_e_um_spark_dataframe(self, processo_etl):
-        dicionario_spark_df_retornado = processo_etl._transformar_dados_empresa(['label1', 'label2'], ['valor1', 'valor2'])
+        dicionario_spark_df_retornado = processo_etl._transformar_dados_empresa(['label1', 'label2'], ['valor1',
+                                                                                                       'valor2'])
         assert str(type(dicionario_spark_df_retornado[0])) == "<class 'dict'>"
         assert str(type(dicionario_spark_df_retornado[1])) == "<class 'pyspark.sql.dataframe.DataFrame'>"
 

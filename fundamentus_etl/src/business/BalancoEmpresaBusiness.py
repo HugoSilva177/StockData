@@ -1,4 +1,4 @@
-from fundamentus_etl.src.etl import BalancoEmpresaETL
+from fundamentus_etl.src.etl.BalancoEmpresaETL import BalancoEmpresaETL
 from fundamentus_etl.src.dao.mongodb.BalancoEmpresaDAO import BalancoEmpresaDAO
 from fundamentus_etl.src.web_scraping.fundamentus_web.DataScraping import DataScraping
 
