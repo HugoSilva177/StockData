@@ -17,7 +17,7 @@ class TestInfoEmpresaScraping:
         return request.param
 
     def test_deve_retornar_quantidade_minima_de_labels_e_de_valores(self, dados_empresa_scraping):
-        quantidade_retornada_labels = len(dados_empresa_scraping.extrair_dados_label())
+        quantidade_retornada_labels = len(dados_empresa_scraping.scraping_dados_label())
         quantidade_retornada_valores = len(dados_empresa_scraping.extrair_dados_valores())
         quantidade_minima = 1
         assert quantidade_retornada_labels >= quantidade_minima
@@ -25,6 +25,6 @@ class TestInfoEmpresaScraping:
 
 
     def test_deve_retornar_mesma_quantidade_labels_e_valores(self, dados_empresa_scraping):
-        quantidade_labels = len(dados_empresa_scraping.extrair_dados_label())
+        quantidade_labels = len(dados_empresa_scraping.scraping_dados_label())
         quantidade_valores = len(dados_empresa_scraping.extrair_dados_valores())
         assert quantidade_labels == quantidade_valores
