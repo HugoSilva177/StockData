@@ -1,5 +1,6 @@
-from web_scraping.fundamentus.src.business.EmpresaBusiness import EmpresaBusiness
+from web_scraping.fundamentus.src.business.empresa_business.EmpresaBusiness import EmpresaBusiness
 from web_scraping.fundamentus.src.scraping.OscilacoesEmpresaScraping import OscilacoesEmpresaScraping
+from web_scraping.fundamentus.src.business.empresa_business.CotacaoEmpresaBusiness import CotacaoEmpresaBusiness
 
 
 class OscilacoesEmpresaBusiness(EmpresaBusiness):

@@ -1,5 +1,5 @@
 from web_scraping.fundamentus.src.dao.mongo_db.AbstractMongoDAO import AbstractMongoDAO
-from web_scraping.fundamentus.src.connect_db_hadoop.DAConexaoMongo import DAConexaoMongo
+from web_scraping.fundamentus.src.connect_db.DAConexaoMongo import DAConexaoMongo
 
 
 class InfoEmpresaDAO(AbstractMongoDAO):
@@ -13,7 +13,7 @@ class InfoEmpresaDAO(AbstractMongoDAO):
         except Exception:
             self.__erro = "Falha em estabelecer conexao com a coleção 'dados_empresa' no MongoDB"
 
-    def buscar_dados_empresa_por_papel(self, papel):
+    def buscar_dados_empresa(self, papel):
         dados_empresa = self.__colecao_mongo.find_one({"Papel": papel})
         return dados_empresa
 

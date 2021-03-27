@@ -1,1 +1,1 @@
-{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/hugo/Documents/Repositorios_GitHub/Projetos/02-StockData/Hadoop_Cluster/VM_Master_Slaves","disabled":false,"__vagrantfile":true}}}
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/hugo/Documents/Repositorios_GitHub/Projetos/StockData/hadoop_cluster_vm/VM_Master_Slaves","disabled":false,"__vagrantfile":true}}}

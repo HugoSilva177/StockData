@@ -1,5 +1,5 @@
 from web_scraping.fundamentus.src.dao.mongo_db.AbstractMongoDAO import AbstractMongoDAO
-from web_scraping.fundamentus.src.connect_db_hadoop.DAConexaoMongo import DAConexaoMongo
+from web_scraping.fundamentus.src.connect_db.DAConexaoMongo import DAConexaoMongo
 
 
 class CotacaoEmpresaDAO(AbstractMongoDAO):
@@ -14,15 +14,10 @@ class CotacaoEmpresaDAO(AbstractMongoDAO):
             self.__erro = "Falha em estabelecer conexao com a coleção 'cotacao_empresa' no MongoDB"
 
 
-    def buscar_cotacao_empresa_por_papel_data(self, papel, data_cotacao):
+    def buscar_dados_empresa(self, papel, data_cotacao):
         cotacao_por_papel_data = self.__colecao_mongo.find_one({"Papel": papel,
                                                                 "Data_ult_cot": data_cotacao})
         return cotacao_por_papel_data
-
-    def buscar_cotacao_empresa_por_id_empresa_data(self, id_empresa, data_cotacao):
-        cotacao_por_id_data = self.__colecao_mongo.find_one({"Id_Empresa": id_empresa,
-                                                             "Data_ult_cot": data_cotacao})
-        return cotacao_por_id_data
 
     def get_erro(self):
         return self.__erro

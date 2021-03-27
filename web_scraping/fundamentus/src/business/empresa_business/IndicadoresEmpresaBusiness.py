@@ -1,4 +1,4 @@
-from web_scraping.fundamentus.src.business.EmpresaBusiness import EmpresaBusiness
+from web_scraping.fundamentus.src.business.empresa_business.EmpresaBusiness import EmpresaBusiness
 from web_scraping.fundamentus.src.scraping.IndicadoresEmpresaScraping import IndicadoresEmpresaScraping
 
 

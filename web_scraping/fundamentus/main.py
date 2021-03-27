@@ -1,0 +1,3 @@
+from web_scraping.fundamentus.src.business.WebScrapingMainBusiness import WebScrapingMainBusiness
+
+WebScrapingMainBusiness().fundamentus_web_scraping()

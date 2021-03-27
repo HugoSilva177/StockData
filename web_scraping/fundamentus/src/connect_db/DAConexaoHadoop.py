@@ -20,4 +20,3 @@ class DAConexaoHadoop(DAConexaoFactory):
 
     def get_erro(self):
         return self.__erro
-
