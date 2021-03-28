@@ -14,8 +14,8 @@ class WebScrapingMainBusiness:
         while nome_papel_invalido:
             self.__papel = input("Digite o nome do papel: ").upper()
             try:
-                DadosValidacaoMongo(self.__papel).validacao_dados_empresa_mongodb()
-                DadosValidacaoHDFS(self.__papel).validacao_dados_empresa_hdfs()
+                DadosValidacaoMongo(self.__papel).validacao_dados_empresa()
+                DadosValidacaoHDFS(self.__papel).validacao_dados_empresa()
                 nome_papel_invalido = False
             except PapelInvalidoError as err:
                 print(f'Erro: {err.get_mensagem_erro()}')

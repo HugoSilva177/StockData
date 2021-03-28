@@ -13,7 +13,7 @@ class InfoEmpresaDAO(AbstractMongoDAO):
         except Exception:
             self.__erro = "Falha em estabelecer conexao com a coleção 'dados_empresa' no MongoDB"
 
-    def buscar_dados_empresa(self, papel):
+    def buscar_dados_empresa(self, papel, data=None):
         dados_empresa = self.__colecao_mongo.find_one({"Papel": papel})
         return dados_empresa
 

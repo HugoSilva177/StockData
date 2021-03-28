@@ -13,7 +13,7 @@ class BalancoEmpresaDAO(AbstractMongoDAO):
             self.__erro = "Falha em estabelecer conexao com a coleção 'balanco_empresa' no MongoDB"
 
 
-    def buscar_dados_empresa(self, papel, data_balanco):
+    def buscar_dados_empresa(self, papel, data_balanco=None):
         balanco_papel_data = self.__colecao_mongo.find_one({"Papel": papel,
                                                             "Ult_balanco_processado": data_balanco})
         return balanco_papel_data
