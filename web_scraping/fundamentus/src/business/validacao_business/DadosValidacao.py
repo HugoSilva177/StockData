@@ -16,17 +16,25 @@ class DadosValidacao:
         print('-------------------------------------')
         print(f"Verificando se dados da empresa '{self.__papel}' existe....")
         if id_dados_empresa is None:
-            dados_empresa = self.__web_scraping.dados_empresa_web_scraping()
-            print(dados_empresa)
+            self.__web_scraping.dados_empresa_web_scraping()
             # FAZER WEB SCRAPING COMPLETO (INFO_EMPRESA, COTAÇÃO E BALANÇO)
             # ENVIAR DADOS PARA O PROCESSO DE ETL DO MONGODB
+            print('-------------------------------------')
+            print('Finalizando Web Scraping!!!!')
         else:
             self.__validacao_dados_cotacao()
+            print('-------------------------------------')
+            print('Finalizando Web Scraping!!!!')
+        dados_empresa = self.__web_scraping.get_dados_empresa_label_valores()
+        if len(dados_empresa) > 0:
+            return dados_empresa
+        else:
+            return None
 
     def __validacao_dados_cotacao(self):
         if EmpresaBusiness.verificar_ultima_cotacao_existe(self.__papel, self.__cotacao_empresa_dao):
-            print('-------------------------------------')
             print('Dados da empresa já existe!')
+            print('-------------------------------------')
             self.__web_scraping.cotacao_empresa_web_scraping()
             # FAZER WEB SCRAPING DA COTAÇÃO
             # ENVIAR DADOS PARA O PROCESSO DE ETL MONGODB
@@ -38,8 +46,6 @@ class DadosValidacao:
                 print('** Dados da balanço incluídos com sucesso!')
             else:
                 print('Dados do balanço já estão atualizados!')
-            print('-------------------------------------')
-            print('Finalizando Web Scraping!!!!')
         else:
             self.__validacao_dados_balanco()
 
@@ -53,5 +59,3 @@ class DadosValidacao:
             print('** Dados da balanço incluídos com sucesso!')
         else:
             print('Todos os dados já estão atualizados!')
-        print('-------------------------------------')
-        print('Finalizando Web Scraping!!!!')

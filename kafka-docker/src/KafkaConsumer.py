@@ -1,5 +1,5 @@
 import sys
-
+import json
 from confluent_kafka import Consumer
 from confluent_kafka.cimpl import KafkaException, KafkaError
 
@@ -37,6 +37,9 @@ def shutdown():
     running = False
 
 def msg_process(msg):
-    print(msg.value().decode('utf-8'))
+    dados = json.loads(msg.value().decode('utf-8'))
+    print(dados)
+    print(dados['nome'])
+    print(type(dados))
 
 basic_consume_loop(consumer, ['test'])
