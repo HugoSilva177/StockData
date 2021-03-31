@@ -5,7 +5,7 @@ class InfoEmpresaHDFS(ReadHDFS):
 
     def __init__(self):
         self.__app_name = "write_read_fundamentus_hdfs"
-        self.__url_complementar = "fundamentus/detalhes/dados_empresa"
+        self.__url_complementar = "fundamentus/detalhes/info_empresa"
         super().__init__(self.__app_name, self.__url_complementar)
 
     def buscar_dados_empresa(self, papel, data_cotacao=None):

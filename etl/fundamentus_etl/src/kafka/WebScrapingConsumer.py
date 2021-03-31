@@ -1,5 +1,0 @@
-
-
-class WebScrapingConsumer:
-
-    pass

@@ -5,7 +5,7 @@ class BalancoEmpresaHDFS(ReadHDFS):
 
     def __init__(self):
         self.__app_name = "write_read_fundamentus_hdfs"
-        self.__url_complementar = "fundamentus/detalhes/dados_balanco"
+        self.__url_complementar = "fundamentus/detalhes/balanco_empresa"
         super().__init__(self.__app_name, self.__url_complementar)
 
     def buscar_dados_empresa(self, papel, data=None):

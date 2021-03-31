@@ -1,4 +1,4 @@
-from web_scraping.fundamentus.src.connect_db.DAConexaoFactory import DAConexaoFactory
+from extract_transform_load.fundamentus_etl.src.connect_db.DAConexaoFactory import DAConexaoFactory
 
 
 class DAConexaoMongo(DAConexaoFactory):
