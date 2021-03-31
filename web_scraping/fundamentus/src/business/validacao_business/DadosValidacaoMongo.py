@@ -6,5 +6,5 @@ from web_scraping.fundamentus.src.business.validacao_business.DadosValidacao imp
 
 class DadosValidacaoMongo(DadosValidacao):
 
-    def __init__(self, papel):
-        super().__init__(papel, InfoEmpresaDAO(), CotacaoEmpresaDAO(), BalancoEmpresaDAO())
+    def __init__(self, papel, html_selector):
+        super().__init__(papel, html_selector, InfoEmpresaDAO(), CotacaoEmpresaDAO(), BalancoEmpresaDAO())

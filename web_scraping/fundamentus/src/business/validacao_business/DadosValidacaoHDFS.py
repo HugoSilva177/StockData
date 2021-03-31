@@ -6,5 +6,5 @@ from web_scraping.fundamentus.src.business.validacao_business.DadosValidacao imp
 
 class DadosValidacaoHDFS(DadosValidacao):
 
-    def __init__(self, papel):
-        super().__init__(papel, InfoEmpresaHDFS(), CotacaoEmpresaHDFS(), BalancoEmpresaHDFS())
+    def __init__(self, papel, html_selector):
+        super().__init__(papel, html_selector, InfoEmpresaHDFS(), CotacaoEmpresaHDFS(), BalancoEmpresaHDFS())

@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from fundamentus_etl.src.connect_db.DAConexaoFactory import DAConexaoFactory
+from etl.fundamentus_etl import DAConexaoFactory
 
 class DAConexaoHadoop(DAConexaoFactory):
 

@@ -3,7 +3,7 @@ from web_scraping.fundamentus.src.dao.mongo_db.AbstractMongoDAO import AbstractM
 
 class BalancoEmpresaDAO(AbstractMongoDAO):
 
-    def __init__(self, banco_dados="mongodb", nome_colecao="balanco_empresa"):
+    def __init__(self, banco_dados="mongodb_docker", nome_colecao="balanco_empresa"):
         super().__init__()
         self.__erro = None
         self.__colecao_mongo = None

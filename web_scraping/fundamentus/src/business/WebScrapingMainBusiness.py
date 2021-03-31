@@ -1,24 +1,22 @@
+from web_scraping.fundamentus.src.kafka.WebScrapingProducer import WebScrapingProducer
+from web_scraping.fundamentus.src.request.RequestHtmlSelector import RequestHtmlSelector
 from web_scraping.fundamentus.src.exceptions.PapelInvalidoError import PapelInvalidoError
 from web_scraping.fundamentus.src.business.validacao_business.DadosValidacaoMongo import DadosValidacaoMongo
 from web_scraping.fundamentus.src.business.validacao_business.DadosValidacaoHDFS import DadosValidacaoHDFS
-from web_scraping.fundamentus.src.kafka.WebScrapingProducer import WebScrapingProducer
-
 
 
 class WebScrapingMainBusiness:
 
-    def __init__(self):
-        self.__papel = None
-
     def fundamentus_web_scraping(self):
         nome_papel_invalido = True
         while nome_papel_invalido:
-            self.__papel = input("Digite o nome do papel: ").upper()
+            papel = input("Digite o nome do papel: ").upper()
             try:
-                dados_empresa_mongo = DadosValidacaoMongo(self.__papel).validacao_dados_empresa()
+                html_selector = RequestHtmlSelector.get_html_selector(papel)
+                dados_empresa_mongo = DadosValidacaoMongo(papel, html_selector).validacao_dados_empresa()
                 if dados_empresa_mongo is not None:
                     self.__enviar_dados_web_scraping('web_scraping_mongo', dados_empresa_mongo)
-                dados_empresa_hdfs = DadosValidacaoHDFS(self.__papel).validacao_dados_empresa()
+                dados_empresa_hdfs = DadosValidacaoHDFS(papel, html_selector).validacao_dados_empresa()
                 if dados_empresa_hdfs is not None:
                     self.__enviar_dados_web_scraping('web_scraping_hdfs', dados_empresa_hdfs)
                 nome_papel_invalido = False

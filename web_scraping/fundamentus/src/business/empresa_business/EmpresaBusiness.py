@@ -21,8 +21,8 @@ class EmpresaBusiness:
             return dados_empresa
 
     @staticmethod
-    def verificar_ultima_cotacao_existe(papel, dao_object):
-        data_ultima_cotacao_scraping = DataScraping(papel).extrair_data_ult_cotacao()
+    def verificar_ultima_cotacao_existe(papel, dao_object, html_selector):
+        data_ultima_cotacao_scraping = DataScraping(papel, html_selector).extrair_data_ult_cotacao()
         print(f"Data última cotação Web Scraping: {data_ultima_cotacao_scraping}")
         ultima_cotacao = dao_object.buscar_dados_empresa(papel,
                                                          data_ultima_cotacao_scraping)
@@ -33,8 +33,8 @@ class EmpresaBusiness:
             return False
 
     @staticmethod
-    def verificar_ultimo_balanco_existe(papel, dao_object):
-        data_ultimo_balanco = DataScraping(papel).extrair_data_ult_balanco()
+    def verificar_ultimo_balanco_existe(papel, dao_object, html_selector):
+        data_ultimo_balanco = DataScraping(papel, html_selector).extrair_data_ult_balanco()
         utlimo_balanco = dao_object.buscar_dados_empresa(papel, data_ultimo_balanco)
         print(f"Data último balanço: {data_ultimo_balanco}")
         if (utlimo_balanco is None) or (len(utlimo_balanco) == 0):

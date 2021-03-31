@@ -8,8 +8,9 @@ from web_scraping.fundamentus.src.scraping.IndicadoresEmpresaScraping import Ind
 
 class WebScrapingBusiness:
 
-    def __init__(self, papel):
+    def __init__(self, papel, html_selector):
         self.__papel = papel
+        self.__html_selector = html_selector
         self.__dados_empresa_label_valores = {}
 
     def dados_empresa_web_scraping(self):
@@ -20,21 +21,21 @@ class WebScrapingBusiness:
 
     def info_empresa_web_scraping(self):
         print('** Web Scraping dados empresa...')
-        info_empresa_scraping = EmpresaBusiness(InfoEmpresaScraping(self.__papel))
+        info_empresa_scraping = EmpresaBusiness(InfoEmpresaScraping(self.__html_selector))
         self.__dados_empresa_label_valores['Info'] = info_empresa_scraping.iniciar_web_scraping()
 
     def cotacao_empresa_web_scraping(self):
         print('** Web Scraping dados cotação...')
-        cotacao_scraping = EmpresaBusiness(CotacaoEmpresaScraping(self.__papel))
-        oscilacoes_scraping = EmpresaBusiness(OscilacoesEmpresaScraping(self.__papel))
-        indicadores_scraping = EmpresaBusiness(IndicadoresEmpresaScraping(self.__papel))
+        cotacao_scraping = EmpresaBusiness(CotacaoEmpresaScraping(self.__papel, self.__html_selector))
+        oscilacoes_scraping = EmpresaBusiness(OscilacoesEmpresaScraping(self.__papel, self.__html_selector))
+        indicadores_scraping = EmpresaBusiness(IndicadoresEmpresaScraping(self.__papel, self.__html_selector))
         self.__dados_empresa_label_valores['Cotacao'] = cotacao_scraping.iniciar_web_scraping()
         self.__dados_empresa_label_valores['Oscilacoes'] = oscilacoes_scraping.iniciar_web_scraping()
         self.__dados_empresa_label_valores['Indicadores'] = indicadores_scraping.iniciar_web_scraping()
 
     def balanco_empresa_web_scraping(self):
         print('** Web Scraping dados balanço...')
-        balanco_scraping = EmpresaBusiness(BalancoEmpresaScraping(self.__papel))
+        balanco_scraping = EmpresaBusiness(BalancoEmpresaScraping(self.__papel, self.__html_selector))
         self.__dados_empresa_label_valores['Balanco'] = balanco_scraping.iniciar_web_scraping()
 
     def get_dados_empresa_label_valores(self):
