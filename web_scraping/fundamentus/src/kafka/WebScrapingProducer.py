@@ -16,13 +16,14 @@ class WebScrapingProducer:
         self.__producer.produce(topic=topic,
                                 key="key",
                                 value=dados_empresa,
-                                callback=self.__retorno_resultado_mensagem_producer)
+                                callback=WebScrapingProducer.__retorno_resultado_mensagem_producer)
 
         # Wait up to 1 second for events. Callbacks will be invoked during
         # this method call if the message is acknowledged.
         self.__producer.poll(1)
 
-    def __retorno_resultado_mensagem_producer(self, err, dados_empresa):
+    @staticmethod
+    def __retorno_resultado_mensagem_producer(err, dados_empresa):
         if err is not None:
             print("Failed to deliver message: %s: %s" % (str(dados_empresa), str(err)))
         else:

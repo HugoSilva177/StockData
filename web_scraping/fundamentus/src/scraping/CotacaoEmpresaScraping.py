@@ -15,7 +15,7 @@ class CotacaoEmpresaScraping(WebScraping):
         cotacao_label.insert(0, 'Papel')
         return cotacao_label
 
-    def extrair_dados_valores(self):
+    def scraping_dados_valores(self):
         cotacao_dados = self.__html_selector.xpath(
             "//table[1]//span[@class='txt']/text() | //table[1]//span[@class='txt']/a/text()").extract()[1::2][1::2]
         cotacao_dados += self.__html_selector.xpath("//table[2]//span[@class='txt']/text()").extract()[1::2][0::3]

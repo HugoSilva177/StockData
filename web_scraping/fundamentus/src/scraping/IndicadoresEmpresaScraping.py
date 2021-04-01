@@ -17,7 +17,7 @@ class IndicadoresEmpresaScraping(WebScraping):
         indicador_fundamentalita_label.insert(0, 'Papel')
         return indicador_fundamentalita_label
 
-    def extrair_dados_valores(self):
+    def scraping_dados_valores(self):
         data_ult_cotacao = DataScraping(self.__html_selector).extrair_data_ult_cotacao()
         indicador_fundamentalita_dados = self.__html_selector.xpath(
             "//table[3]//td[@class='data w2']//span[@class='txt']/text() | "

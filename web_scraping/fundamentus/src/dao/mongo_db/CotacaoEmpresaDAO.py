@@ -13,7 +13,6 @@ class CotacaoEmpresaDAO(AbstractMongoDAO):
         except Exception:
             self.__erro = "Falha em estabelecer conexao com a coleção 'cotacao_empresa' no MongoDB"
 
-
     def buscar_dados_empresa(self, papel, data_cotacao=None):
         cotacao_por_papel_data = self.__colecao_mongo.find_one({"Papel": papel,
                                                                 "Data_ult_cot": data_cotacao})

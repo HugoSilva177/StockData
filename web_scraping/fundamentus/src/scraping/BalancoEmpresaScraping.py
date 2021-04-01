@@ -25,7 +25,7 @@ class BalancoEmpresaScraping(WebScraping):
         balanco_label.insert(0, 'Papel')
         return balanco_label
 
-    def extrair_dados_valores(self):
+    def scraping_dados_valores(self):
         balanco_dados = self.__html_selector.xpath(
             "//table[2]//span[@class='txt']/text()").extract()[2:6][1::2]
         balanco_dados += self.__html_selector.xpath(

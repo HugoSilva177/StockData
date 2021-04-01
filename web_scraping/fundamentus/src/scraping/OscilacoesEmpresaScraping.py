@@ -19,7 +19,7 @@ class OscilacoesEmpresaScraping(WebScraping):
         oscilacoes_label.insert(0, 'Papel')
         return oscilacoes_label
 
-    def extrair_dados_valores(self):
+    def scraping_dados_valores(self):
         data_ult_cotacao = DataScraping(self.__html_selector).extrair_data_ult_cotacao()
         oscilacoes_dados = self.__html_selector.xpath(
             "//table[3]//span[@class='oscil']/font/text()").extract()

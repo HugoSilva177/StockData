@@ -10,7 +10,6 @@ from extract_transform_load.fundamentus_etl.src.etl.IndicadoresEmpresaETL import
 class EmpresaBusiness:
 
     def __init__(self):
-        self.__id_cotacao = None
         self.__execucao_web_scraping_consumer = True
         self.__web_scraping_consumer = WebScrapingConsumer(['web_scraping_mongo', 'web_scraping_hdfs'])
         self.__dados_empresa = None
@@ -22,17 +21,17 @@ class EmpresaBusiness:
                 continue
             else:
                 lista_dados_empresa = self.__processar_mensagem(mensagem)
-                for label_dados in lista_dados_empresa:
-                    self.__dados_empresa = lista_dados_empresa[label_dados]
-                    if label_dados == 'Info':
+                for dados_empresa_key in lista_dados_empresa:
+                    self.__dados_empresa = lista_dados_empresa[dados_empresa_key]
+                    if dados_empresa_key == 'Info':
                         self.__iniciar_etl_info_empresa()
-                    elif label_dados == 'Cotacao':
+                    elif dados_empresa_key == 'Cotacao':
                         self.__iniciar_etl_cotacao_empresa()
-                    elif label_dados == 'Oscilacoes':
+                    elif dados_empresa_key == 'Oscilacoes':
                         self.__iniciar_etl_oscilacoes_empresa()
-                    elif label_dados == 'Indicadores':
+                    elif dados_empresa_key == 'Indicadores':
                         self.__iniciar_etl_indicadores_empresa()
-                    elif label_dados == 'Balanco':
+                    elif dados_empresa_key == 'Balanco':
                         self.__iniciar_etl_balanco_empresa()
 
     def __processar_mensagem(self, mensagem):

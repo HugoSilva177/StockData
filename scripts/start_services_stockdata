@@ -1,0 +1,41 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          start_services_stockdata
+# Required-Start:    virtualbox docker
+# Required-Stop:     virtualbox docker
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Serviços necessários para execução do StockData
+# Description:       Serviços Docker (MongoDB, Kafka e Airflow),
+#                    VMs Vagrant para execução do cluster Hadoop
+### END INIT INFO
+
+# Subindo VM Windows pelo VirtualBox
+
+echo "--------------------------------------------------------" >> ./start_services.log
+echo "Subindo VMs Cluster Hadoop..." >> ./start_services.log
+
+
+# Verificando se a VM já está pronta para montar pasta compartilhada pelo Windows
+echo "Aguardando VMs terminar inicialização ..." >> ./start_services.log
+while ! ping -c 1 -n -w 1 192.168.100.16 &> /dev/null
+do
+    echo "Aguardando..."  >> ./start_services.log
+done
+echo "Cluster Hadoop inicializado com sucesso!" >> ./start_services.log
+
+sleep 60
+
+echo "Inicializando MongoDB Docker..." >> ./start_services.log
+docker start mongo_db
+sleep 10
+
+echo "Inicializando Kafka Docker..." >> ./start_services.log
+docker-compose -f ../StockData/kafka_docker/docker-compose.yml up -d
+sleep 10
+
+echo "Inicializando Airflow Docker..." >> ./start_services.log
+docker-compose -f ../StockData/airflow_docker/docker-compose.yaml up -d
+sleep 10
+
+echo "Script finalizado!!!" >> ./start_services.log
