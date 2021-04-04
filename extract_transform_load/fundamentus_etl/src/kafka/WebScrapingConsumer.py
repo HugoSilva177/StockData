@@ -8,7 +8,7 @@ class WebScrapingConsumer:
     def __init__(self, topics):
         self.__topics = topics
         conf = {'bootstrap.servers': "localhost:9092,localhost:9092",
-                'group.id': "foo",
+                'group.id': "etl_fundamentus",
                 'auto.offset.reset': 'smallest'}
         self.__consumer = Consumer(conf)
 

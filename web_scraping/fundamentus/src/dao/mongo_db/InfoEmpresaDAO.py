@@ -4,7 +4,7 @@ from web_scraping.fundamentus.src.connect_db.DAConexaoMongo import DAConexaoMong
 
 class InfoEmpresaDAO(AbstractMongoDAO):
 
-    def __init__(self, banco_dados="mongodb_docker", nome_colecao="info_empresa"):
+    def __init__(self, banco_dados="fundamentus", nome_colecao="info_empresa"):
         super().__init__()
         self.__erro = None
         self.__colecao_mongo = None

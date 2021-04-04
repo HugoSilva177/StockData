@@ -13,13 +13,13 @@ class DAConexaoFactory:
         conexao_db = None
         self.__factory = banco_tipo
         if(banco_tipo == self.__mongo_db):
-            url_conexao = 'mongodb_docker://localhost:27017/'
+            url_conexao = 'mongodb://localhost:27017/'
             try:
                 cliente_db = MongoClient(url_conexao)
                 conexao_db = cliente_db[banco_nome]
             except Exception:
                 self.__erro_conexao = 'Erro ao conectar no MongoDB (mongodb_docker)'
-        if(banco_tipo == self.__hdfs):
+        elif(banco_tipo == self.__hdfs):
             url_conexao = 'hdfs://172.17.177.40:9000/user/hadoopuser/'
             try:
                 conexao_db = url_conexao + banco_nome

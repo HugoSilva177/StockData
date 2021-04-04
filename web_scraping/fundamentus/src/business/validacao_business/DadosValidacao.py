@@ -13,7 +13,7 @@ class DadosValidacao:
         self.__balaco_empresa_dao = balanco_empresa_dao
 
     def validacao_dados_empresa(self):
-        id_dados_empresa = EmpresaBusiness.verificar_dados_empresa_exitem(self.__papel,
+        id_dados_empresa = EmpresaBusiness.verificar_dados_empresa_existe(self.__papel,
                                                                           self.__info_empresa_dao)
         print('-------------------------------------')
         print(f"Verificando se dados da empresa '{self.__papel}' existe....")
