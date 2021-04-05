@@ -4,7 +4,7 @@ from extract_transform_load.fundamentus_etl.src.connect_db.DAConexaoMongo import
 
 class InfoEmpresaDAO(AbstractMongoDAO):
 
-    def __init__(self, banco_dados="mongodb_docker", nome_colecao="info_empresa"):
+    def __init__(self, banco_dados="fundamentus", nome_colecao="info_empresa"):
         super().__init__()
         self.__erro = None
         self.__colecao_mongo = None
@@ -14,9 +14,6 @@ class InfoEmpresaDAO(AbstractMongoDAO):
             self.__erro = "Falha em estabelecer conexao com a coleção 'dados_empresa' no MongoDB"
 
     def inserir_dados(self, info_empresa):
-        print('-------------------------------------')
-        print('Dados da empresa não existe!')
-        print('* Incluindo dados da empresa...')
         id_empresa_inserida = self.__colecao_mongo.insert_one(info_empresa).inserted_id
         return id_empresa_inserida
 

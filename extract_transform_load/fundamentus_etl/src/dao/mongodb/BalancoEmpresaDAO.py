@@ -4,7 +4,7 @@ from extract_transform_load.fundamentus_etl.src.dao.mongodb.AbstractMongoDAO imp
 
 class BalancoEmpresaDAO(AbstractMongoDAO):
 
-    def __init__(self, banco_dados="mongodb_docker", nome_colecao="balanco_empresa"):
+    def __init__(self, banco_dados="fundamentus", nome_colecao="balanco_empresa"):
         super().__init__()
         self.__erro = None
         self.__colecao_mongo = None
@@ -14,6 +14,5 @@ class BalancoEmpresaDAO(AbstractMongoDAO):
             self.__erro = "Falha em estabelecer conexao com a coleção 'balanco_empresa' no MongoDB"
 
     def inserir_dados(self, balanco_empresa):
-        print('** Incluindo dados do balanço...')
         id_balanco_inserido = self.__colecao_mongo.insert_one(balanco_empresa).inserted_id
         return id_balanco_inserido

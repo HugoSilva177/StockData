@@ -6,8 +6,9 @@ from extract_transform_load.fundamentus_etl.src.dao.hadoop_hdfs.OscilacoesEmpres
 
 class OscilacoesEmpresaETL(ProcessoETL):
 
-    def __init__(self, dados_empresa):
+    def __init__(self, dados_empresa, id_inserido_cotacao):
         super().__init__(OscilacoesEmpresaDAO(), OscilacoesEmpresaHDFS())
+        self.__id_inserido_cotacao = id_inserido_cotacao
         self.__dados_empresa = dados_empresa
 
 

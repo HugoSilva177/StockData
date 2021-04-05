@@ -4,7 +4,7 @@ from extract_transform_load.fundamentus_etl.src.connect_db.DAConexaoMongo import
 
 class CotacaoEmpresaDAO(AbstractMongoDAO):
 
-    def __init__(self, banco_dados="mongodb_docker", nome_colecao="cotacao_empresa"):
+    def __init__(self, banco_dados="fundamentus", nome_colecao="cotacao_empresa"):
         super().__init__()
         self.__erro = None
         self.__colecao_mongo = None
@@ -15,7 +15,6 @@ class CotacaoEmpresaDAO(AbstractMongoDAO):
 
 
     def inserir_dados(self, cotacao_empresa):
-        print('** Incluindo dados da cotação...')
         id_inserido_cotacao = self.__colecao_mongo.insert_one(cotacao_empresa).inserted_id
         return id_inserido_cotacao
 

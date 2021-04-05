@@ -6,9 +6,10 @@ from extract_transform_load.fundamentus_etl.src.dao.hadoop_hdfs.IndicadoresEmpre
 
 class IndicadoresEmpresaETL(ProcessoETL):
 
-    def __init__(self, dados_empresa):
+    def __init__(self, dados_empresa, id_inserido_cotacao):
         super().__init__(IndicadoresDAO(), IndicadoresEmpresaHDFS())
         self.__dados_empresa = dados_empresa
+        self.__id_inserido_cotacao = id_inserido_cotacao
 
 
     def indicadores_empresa_etl(self):

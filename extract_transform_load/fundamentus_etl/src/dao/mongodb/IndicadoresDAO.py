@@ -4,7 +4,7 @@ from extract_transform_load.fundamentus_etl.src.dao.mongodb.AbstractMongoDAO imp
 
 class IndicadoresDAO(AbstractMongoDAO):
 
-        def __init__(self, banco_dados="mongodb_docker", nome_colecao="indicadores_empresa"):
+        def __init__(self, banco_dados="fundamentus", nome_colecao="indicadores_empresa"):
             super().__init__()
             self.__erro = None
             self.__colecao_mongo = None

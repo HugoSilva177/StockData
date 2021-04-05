@@ -10,7 +10,7 @@ class ProcessoETL:
 
     def _extrair_dados_empresa(self, dados_empresa):
         dados_label = dados_empresa['dados_label']
-        dados_valores = dados_empresa['dados_label']
+        dados_valores = dados_empresa['dados_valores']
         return dados_label, dados_valores
 
     def _transformar_dados_empresa(self, dados_label, dados_valores):

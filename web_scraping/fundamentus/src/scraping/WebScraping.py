@@ -11,7 +11,6 @@ class WebScraping(metaclass=ABCMeta):
     def iniciar_web_scraping_label_valores(self):
         dados_label = self.scraping_dados_label()
         dados_valores = self.scraping_dados_valores()
-
         return dados_label, dados_valores
 
     @abstractmethod
