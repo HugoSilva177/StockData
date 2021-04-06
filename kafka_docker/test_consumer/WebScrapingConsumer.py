@@ -26,9 +26,12 @@ class WebScrapingConsumer:
                 elif mensagem.error():
                     raise KafkaException(mensagem.error())
             else:
+                print(mensagem.topic())
                 return mensagem
-        finally:
-            self.__consumer.close()
+        except Exception:
+            print("Erro!")
+        #finally:
+        #    self.__consumer.close()
 
     def shutdown(self):
         running = False

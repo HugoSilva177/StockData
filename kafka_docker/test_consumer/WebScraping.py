@@ -6,10 +6,10 @@ class WebScraping:
 
     def __init__(self):
         self.__execucao_web_scraping_consumer = True
-        self.__web_scraping_consumer = WebScrapingConsumer(['web_scraping_mongo', 'web_scraping_hdfs'])
+        self.__web_scraping_consumer = WebScrapingConsumer(['web_scraping_mongo'])
 
     def empresa_etl_web_scraping_business(self):
-        while self.__execucao_web_scraping_consumer:
+        while True:
             mensagem = self.__web_scraping_consumer.mensagem_dados_empresa_consumer()
             if mensagem is None:
                 continue
