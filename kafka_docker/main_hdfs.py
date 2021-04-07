@@ -1,0 +1,3 @@
+from kafka_docker.test_consumer.WebScrapingHDFS import WebScrapingHDFS
+
+WebScrapingHDFS().empresa_etl_web_scraping_business()

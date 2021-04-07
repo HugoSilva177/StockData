@@ -16,9 +16,9 @@ class WebScrapingMainBusiness:
                 dados_empresa_mongo = DadosValidacaoMongo(papel, html_selector).validacao_dados_empresa()
                 if dados_empresa_mongo is not None:
                     self.__enviar_dados_web_scraping('web_scraping_mongo', dados_empresa_mongo)
-                #dados_empresa_hdfs = DadosValidacaoHDFS(papel, html_selector).validacao_dados_empresa()
-                #if dados_empresa_hdfs is not None:
-                #    self.__enviar_dados_web_scraping('web_scraping_hdfs', dados_empresa_hdfs)
+                dados_empresa_hdfs = DadosValidacaoHDFS(papel, html_selector).validacao_dados_empresa()
+                if dados_empresa_hdfs is not None:
+                    self.__enviar_dados_web_scraping('web_scraping_hdfs', dados_empresa_hdfs)
                 nome_papel_invalido = False
             except PapelInvalidoError as err:
                 print(f'Erro: {err.get_mensagem_erro()}')

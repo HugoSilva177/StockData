@@ -2,11 +2,11 @@ from kafka_docker.test_consumer.WebScrapingConsumer import WebScrapingConsumer
 import json
 
 
-class WebScraping:
+class WebScrapingHDFS:
 
     def __init__(self):
         self.__execucao_web_scraping_consumer = True
-        self.__web_scraping_consumer = WebScrapingConsumer(['web_scraping_mongo'])
+        self.__web_scraping_consumer = WebScrapingConsumer(['web_scraping_hdfs'])
 
     def empresa_etl_web_scraping_business(self):
         while True:
@@ -18,15 +18,15 @@ class WebScraping:
                 for dados_empresa_key in lista_dados_empresa:
                     dados_empresa = lista_dados_empresa[dados_empresa_key]
                     if dados_empresa_key == 'Info':
-                        print(dados_empresa)
+                        print('Mongo:', dados_empresa)
                     elif dados_empresa_key == 'Cotacao':
-                        print(dados_empresa)
+                        print('Mongo:',dados_empresa)
                     elif dados_empresa_key == 'Oscilacoes':
-                        print(dados_empresa)
+                        print('Mongo:',dados_empresa)
                     elif dados_empresa_key == 'Indicadores':
-                        print(dados_empresa)
+                        print('Mongo:',dados_empresa)
                     elif dados_empresa_key == 'Balanco':
-                        print(dados_empresa)
+                        print('Mongo:',dados_empresa)
 
     def __processar_mensagem(self, mensagem):
         dados_empresa = json.loads(mensagem.value().decode('utf-8'))
