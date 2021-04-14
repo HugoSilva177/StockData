@@ -3,12 +3,12 @@ from web_scraping.fundamentus.src.dao.mongo_db.AbstractMongoDAO import AbstractM
 
 class BalancoEmpresaDAO(AbstractMongoDAO):
 
-    def __init__(self, banco_dados="mongodb_docker", nome_colecao="balanco_empresa"):
+    def __init__(self, nome_banco="fundamentus", nome_colecao="balanco_empresa"):
         super().__init__()
         self.__erro = None
         self.__colecao_mongo = None
         try:
-            self.__colecao_mongo = DAConexaoMongo(banco_dados, nome_colecao).get_colecao_mongo()
+            self.__colecao_mongo = DAConexaoMongo(nome_banco, nome_colecao).get_colecao_mongo()
         except Exception:
             self.__erro = "Falha em estabelecer conexao com a coleção 'balanco_empresa' no MongoDB"
 

@@ -14,7 +14,7 @@ class DAConexaoMongo:
         return colecao_mongo
 
     def __get_conexao(self):
-        url_conexao = 'mongodb_docker://localhost:27017/'
+        url_conexao = 'mongodb://localhost:27017/'
         try:
             cliente_db = MongoClient(url_conexao)
             conexao_db = cliente_db[self.__nome_banco]

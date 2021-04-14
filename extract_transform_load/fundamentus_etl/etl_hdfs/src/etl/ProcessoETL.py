@@ -14,8 +14,8 @@ class ProcessoETL:
 
     def _transformar_dados_empresa(self, dados_label, dados_valores):
         dados_label = DadosTransformacao.remover_caracteres_especiais(dados_label)
-        dados_label = DadosTransformacao.transformar_lista_em_tuples(dados_label)
-        dados_empresa_spark_df = self.__spark_session.createDataFrame(dados_label, dados_valores)
+        dados_valores = DadosTransformacao.transformar_lista_em_tuples(dados_valores)
+        dados_empresa_spark_df = self.__spark_session.createDataFrame(dados_valores, dados_label)
         return dados_empresa_spark_df
 
     def _gravar_dados_empresa(self, dados_empresa_spark_df):
