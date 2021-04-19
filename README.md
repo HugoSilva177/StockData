@@ -1,4 +1,4 @@
-# StockData
+# StockData (projeto em desenvolvimento)
 
 O projeto StockData tem como objetivo fazer a coleta de informações de uma empresa pelo seu código BVMF de diversas fontes diferentes.
 Após a coleta o intuito é que os dados sejam pré formatados, organizados, fornecidos e utilizados para análise e aprendizagem de máquina.
