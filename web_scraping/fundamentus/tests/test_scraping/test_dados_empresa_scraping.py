@@ -30,3 +30,7 @@ class TestInfoEmpresaScraping:
         quantidade_labels = len(dados_empresa_scraping.scraping_dados_label())
         quantidade_valores = len(dados_empresa_scraping.scraping_dados_valores())
         assert quantidade_labels == quantidade_valores
+
+    def test_deve_iniciar_web_scraping_e_retornar_listas_labels_e_valores(self, dados_empresa_scraping):
+        dados_labels, dados_valores = dados_empresa_scraping.iniciar_web_scraping_label_valores()
+        assert len(dados_labels) == len(dados_valores)

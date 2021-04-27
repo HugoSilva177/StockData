@@ -6,9 +6,9 @@ from web_scraping.fundamentus.src.connect_db.DAConexaoHadoop import DAConexaoHad
 class ReadHDFS(metaclass=ABCMeta):
 
     def __init__(self, app_name, url_complementar):
-        self.__conexao_hadoop = DAConexaoHadoop(app_name, url_complementar)
+        self.__conexao_hadoop = DAConexaoHadoop(app_name)
         self.__spark_session = self.__conexao_hadoop.get_spark_session_para_conexao()
-        self.__url_conexao_hadoop = self.__conexao_hadoop.get_url_conexao_hadoop_hdfs()
+        self.__url_conexao_hadoop = self.__conexao_hadoop.get_url_conexao_hadoop_hdfs(url_complementar)
 
     def _ler_dados_spark_dataframe_no_hdfs(self):
         try:

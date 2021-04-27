@@ -20,7 +20,7 @@ class TestDadosEmpresaHDFS:
 
     @pytest.fixture
     def balanco_empresa_hdfs(self):
-        return BalancoEmpresaHDFS( )
+        return BalancoEmpresaHDFS()
 
     @pytest.fixture(params=[InfoEmpresaHDFS(url_complementar="fundamentus/detalhes/test_info_empresa"),
                             CotacaoEmpresaHDFS(url_complementar="fundamentus/detalhes/test_cotacao_empresa"),
