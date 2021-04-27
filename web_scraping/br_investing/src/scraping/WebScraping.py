@@ -6,10 +6,8 @@ class WebScraping(metaclass=ABCMeta):
     def __init__(self):
         self.__erro = None
 
-    def iniciar_web_scraping_label_valores(self):
-        dados_label = self.scraping_dados_label()
-        dados_valores = self.scraping_dados_valores()
-        return dados_label, dados_valores
+    def iniciar_web_scraping_noticias(self):
+        pass
 
     @abstractmethod
     def scraping_dados_label(self):

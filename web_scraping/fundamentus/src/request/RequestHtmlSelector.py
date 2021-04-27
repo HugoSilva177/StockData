@@ -5,9 +5,6 @@ from web_scraping.fundamentus.src.exceptions.PapelInvalidoError import PapelInva
 
 class RequestHtmlSelector:
 
-    def __init__(self):
-        self.__html_selector = None
-
     @staticmethod
     def get_html_selector(papel):
         url = 'https://fundamentus.com.br/detalhes.php?papel=%s' % papel
