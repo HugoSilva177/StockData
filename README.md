@@ -37,3 +37,4 @@ o Kafka para o serviço de ETL.
   * Docker: criação de containers para arquitetura de microservices
   * Git e Github: versionamento do projeto
   
+Obs.: O projeto StockData é um projeto paralelo ao projeto StockPred no qual irá utilizar esses dados já pré-processados para análise e técnicas de Machine Learning para a predição de resultados. https://github.com/HugoSilva177/StockPred
